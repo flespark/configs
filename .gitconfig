@@ -1,0 +1,23 @@
+[user]
+	name = flespark
+	email = xxx@gmail.com
+[credential]
+	helper = store
+[color]
+	ui = auto
+[push]
+	default = matching
+[alias]
+	root = rev-parse --show=toplevel
+	co = checkout
+	br = branch
+	ci = commit
+	ca = commit --amend
+	df = diff
+	dc = diff --cached
+	st = status
+	ra = reset HEAD --
+	rh = reset --hard
+	fp = format-patch
+	lg = log --name-status
+	cp = cherry-pick
