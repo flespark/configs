@@ -21,3 +21,5 @@
 	fp = format-patch
 	lg = log --name-status
 	cp = cherry-pick
+[core]
+	editor = vim
