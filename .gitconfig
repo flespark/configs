@@ -21,5 +21,8 @@
 	fp = format-patch
 	lg = log --name-status
 	cp = cherry-pick
+	af = am --reject --whitespace=fix
 [core]
 	editor = vim
+[init]
+	templatedir = ~/.git-templates
