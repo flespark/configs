@@ -1,0 +1,15 @@
+[submodule ".tmux/plugins/tmux-colors-solarized"]
+	path = .tmux/plugins/tmux-colors-solarized
+	url = https://github.com/seebi/tmux-colors-solarized.git
+[submodule ".tmux/plugins/tmux-sensible"]
+	path = .tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
+[submodule ".tmux/plugins/tmux-copycat"]
+	path = .tmux/plugins/tmux-copycat
+	url = https://github.com/tmux-plugins/tmux-copycat.git
+[submodule ".tmux/plugins/extrakto"]
+	path = .tmux/plugins/extrakto
+	url = https://github.com/laktak/extrakto.git
