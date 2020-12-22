@@ -11,7 +11,7 @@ set encoding=utf8
 
 "enable netrw file explorer
 set nocp
-noremap <leader> p
+let mapleader = "\<space>"
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <right> <nop>
