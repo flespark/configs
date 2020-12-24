@@ -1,0 +1,8 @@
+#!/bin/bash
+if type -P fzf &>/dev/null;then
+
+if fd -V &>/dev/null;then
+	export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
+fi
+
+fi

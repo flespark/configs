@@ -1,16 +1,34 @@
 
 PS1='\[\033[0;31m\]\A \[\033[32m\]\W \[\033[36m\]>\[\033[00m\]'
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias fd2='find ./* -maxdepth 2 -name'
-alias fd3='find ./* -maxdepth 3 -name'
-alias fd4='find ./* -maxdepth 4 -name'
-alias fd5='find ./* -maxdepth 5 -name'
-alias ta='tmux attach'
-alias lg='grep -inrI ./ -e'
-alias lf='grep -inrIF ./ -e'
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+fi
 
-export FZF_DEFAULT_COMMAND='find -type f'
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+if [ -f ~/.bash_env ]; then
+	. ~/.bash_env
+fi
+
+if type -P fzf &>/dev/null;then
+
+if fd -V &>/dev/null;then
+	# Use fd (https://github.com/sharkdp/fd) instead of the default find
+	# command for listing path candidates.
+	# - The first argument to the function ($1) is the base path to start traversal
+	# - See the source code (completion.{bash,zsh}) for the details.
+	_fzf_compgen_path() {
+		fd --hidden --follow --exclude ".git" . "$1"
+	}
+
+	# Use fd to generate the list for directory completion
+	_fzf_compgen_dir() {
+		fd --type d --hidden --follow --exclude ".git" . "$1"
+	}
+
+fi
+
+fi
+
+#load fzf default config
+. ~/.fzf/key-bindings.bash
+. ~/.fzf/completion.bash
