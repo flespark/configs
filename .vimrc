@@ -16,6 +16,8 @@ noremap <up> <nop>
 noremap <down> <nop>
 noremap <right> <nop>
 noremap <left> <nop>
+nnoremap <silent> <leader>p :set paste!<cr>
 nnoremap <esc><esc> :nohlsearch<return><esc>
-nnoremap <silent> <leader>p :set paste<cr>
+nnoremap <silent> <leader>l <esc>:set norelativenumber! nonumber!<cr>
+:nnoremap <silent> <F5> :let _s=@/ <bar> :%s/\s\+$//e <bar> :let @/=_s <bar> :nohl <bar> :unlet _s <cr>
 inoremap jj <esc>
