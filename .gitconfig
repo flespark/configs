@@ -8,7 +8,7 @@
 [push]
 	default = matching
 [alias]
-	root = rev-parse --show=toplevel
+	root = rev-parse --show-toplevel
 	co = checkout
 	br = branch
 	ci = commit
