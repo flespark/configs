@@ -5,8 +5,10 @@
 	helper = store
 [color]
 	ui = auto
+[merge]
+	ff = only
 [push]
-	default = matching
+	default = simple
 [alias]
 	root = rev-parse --show-toplevel
 	co = checkout
