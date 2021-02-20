@@ -1,0 +1,5 @@
+#!/bin/bash                                                                                                                                                                                                                                
+_dc(){
+        local opts=$(tr '/' '\n'<<<"$PWD" | tac | tr '\n' ' ')
+        COMPREPLY=($(compgen -W "${opts}" -- "${COMP_WORDS[1]}"))
+}

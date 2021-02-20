@@ -9,6 +9,10 @@ if [ -f ~/.bash_env ]; then
 	. ~/.bash_env
 fi
 
+if [ -f ~/.bash_command ]; then
+	. ~/.bash_command
+fi
+
 if type -P fzf &>/dev/null;then
 
 if fd -V &>/dev/null;then
