@@ -1,4 +1,6 @@
 #!/bin/bash
+
+export 
 # fzf config
 if type -P fzf &>/dev/null;then
 
@@ -7,10 +9,12 @@ if fd -V &>/dev/null;then
 fi
 
 fi
+# go config
+export GOPATH=$HOME/go
 
 # powerline-go config
 function _update_ps1() {
-    PS1="$($GOPATH/bin/powerline-go -error $? -jobs $(jobs -p | wc -l))"
+    PS1="$($GOPATH/bin/powerline-go -cwd-max-depth 4 -cwd-mode semifancy -modules user,ssh,cwd,perms,git,exit,root -git-assume-unchanged-size 2048 -error $?)" 
 
     # Uncomment the following line to automatically clear errors after showing
     # them once. This not only clears the error for powerline-go, but also for

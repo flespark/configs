@@ -1,7 +1,24 @@
 alias ll='ls -alF'
+alias lf='ls -d'
+alias lt='ls -lt'
 alias la='ls -A'
 alias l='ls -CF'
-alias ta='tmux attach'
+alias md='mkdir'
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias mk='make'
+alias ta='tmux attach 2>/null || tmux'
+alias vd='vimdiff'
+alias lr='less -r'
+alias rf='readlink -f'
+alias gd='git diff --no-index'
+alias path='echo -e ${PATH//:/\\n}'
+alias gc='git clone'
+alias cx='cd `git rev-parse --show-toplevel`'
 
 if [ $(type -P fd-find && alias fd='fd-find' || type -P fd) &>/dev/null ];then
 	alias fd2='fd -d 2'
@@ -16,13 +33,13 @@ else
 fi
 
 if type -P rg &>/dev/null;then
-	alias lg='rg -inS -e'
-	alias lw='rg -inw -e'
-	alias lf='rg -inF -e'
-	alias lgc='rg -in -tc -e'
-	alias lgm='rg -in -tamake -tmake -e'
+	alias gg='rg -inS -e'
+	alias gw='rg -inw -e'
+	alias gf='rg -inF -e'
+	alias gc='rg -in -tc -e'
+	alias gm='rg -in -tamake -tmake -e'
 else
-	alias lg='grep -inrI ./ -e'
-	alias lf='grep -inrIF ./ -e'
+	alias gg='grep -inrI ./ -e'
+	alias gf='grep -inrIF ./ -e'
 fi
 

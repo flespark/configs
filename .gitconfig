@@ -5,12 +5,20 @@
 	helper = store
 [color]
 	ui = auto
+[log]
+	decorate = auto
 [merge]
 	ff = only
+        tool = vimdiff
+        conflictstyle = diff3
+        defaultToUpstream = true
+[mergetool]
+        prompt = false
 [push]
 	default = simple
 [alias]
-	root = rev-parse --show-toplevel
+	rt = rev-parse --show-toplevel
+	ad = add -u
 	co = checkout
 	br = branch
 	ci = commit
@@ -21,10 +29,17 @@
 	ra = reset HEAD --
 	rh = reset --hard
 	fp = format-patch
+	mg = merge
+	rv = revert
 	lg = log --name-status
 	cp = cherry-pick
 	af = am --reject --whitespace=fix
+	mt = mergetool
 [core]
 	editor = vim
 [init]
 	templatedir = ~/.git-templates
+[core]
+        editor = vim
+[http]
+	proxy = http://localhost:1809
