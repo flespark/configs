@@ -1,9 +1,12 @@
 #!/bin/bash                                                                                                                                                                                                                                
 
-source ~/.bash_completion
+cwd="$(dirname "${BASH_SOURCE[0]}")"
+# shellcheck source=.bash_completion
+source "${cwd}"/.bash_completion                                                               
+
 dc(){
-        local param last_path path=$PWD
-        if [[ ($# != 1) || ($1 =~ ^((-h)|(--help))$) ]]; then
+        local param last_path path="$PWD"
+        if [[ ($# != 1) || ("$1" =~ ^((-h)|(--help))$) ]]; then
                 echo -e "usage:
                 \rdc -[1-9] to Nth parent dir
                 \rdc basedir to matched parent dir" >&2
@@ -11,18 +14,18 @@ dc(){
         elif [[ ("$1" =~ ^[0-9]+$) ]]; then
                 param=$(($1))
                 while ((param-- > 0)); do
-                        path=${path%/*} 2>/dev/null || break
+                        path="${path%/*}" 2>/dev/null || break
                 done
-                cd $path
-                return
+                cd "$path" || return 1
         else
-                while [[ $last_path != $path ]]; do
-                        [[ $(basename $path 2>/dev/null) == "$1" ]] && cd $path && return 0
+                while [[ $last_path != "$path" ]]; do
+                        [[ $(basename "$path" 2>/dev/null) == "$1" ]] && cd "$path" && return 0
                         last_path=$path
-                        path=${path%/*}
+                        path="${path%/*}"
                 done
                 echo "dc: can't match parent dir $1" >&2
                 return 1;
         fi
+        return
 }
 complete -F _dc dc

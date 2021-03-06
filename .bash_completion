@@ -1,5 +1,11 @@
 #!/bin/bash                                                                                                                                                                                                                                
 _dc(){
-        local opts=$(tr '/' '\n'<<<"$PWD" | tac | tr '\n' ' ')
-        COMPREPLY=($(compgen -W "${opts}" -- "${COMP_WORDS[1]}"))
+	local opts
+	if (( ${#COMP_WORDS[@]} > 2 )); then
+		return
+	fi
+	local IFS=$'\n'
+	opts="$( tr '/' '\n' <<<"$PWD" | tac )"
+	# shellcheck disable=2207
+	COMPREPLY=($(compgen -W "${opts}" -- "${COMP_WORDS[1]}"))
 }
