@@ -13,3 +13,39 @@
 #[submodule ".tmux/plugins/extrakto"]
 #	path = .tmux/plugins/extrakto
 #	url = https://github.com/laktak/extrakto.git
+[submodule ".vim/pack/combine/start/vim-fugitive"]
+	path = .vim/pack/combine/start/vim-fugitive
+	url = https://hub.fastgit.org/tpope/vim-fugitive.git
+[submodule ".vim/pack/combine/start/asyncrun.vim"]
+	path = .vim/pack/combine/start/asyncrun.vim
+	url = https://hub.fastgit.org/skywind3000/asyncrun.vim.git
+[submodule ".vim/pack/extension/start/ale"]
+	path = .vim/pack/extension/start/ale
+	url = https://hub.fastgit.org/dense-analysis/ale.git
+[submodule ".vim/pack/profile/start/vim-airline"]
+	path = .vim/pack/profile/start/vim-airline
+	url = https://hub.fastgit.org/vim-airline/vim-airline.git
+[submodule ".vim/pack/profile/opt/dracula-theme"]
+	path = .vim/pack/profile/opt/dracula-theme
+	url = https://hub.fastgit.org/dracula/dracula-theme.git
+[submodule ".vim/pack/profile/opt/vim-airline-themes"]
+	path = .vim/pack/profile/opt/vim-airline-themes
+	url = https://hub.fastgit.org/vim-airline/vim-airline-themes.git
+[submodule ".vim/pack/extension/start/editorconfig-vim"]
+	path = .vim/pack/extension/start/editorconfig-vim
+	url = https://hub.fastgit.org/editorconfig/editorconfig-vim.git
+[submodule ".vim/pack/extension/start/vim-surround"]
+	path = .vim/pack/extension/start/vim-surround
+	url = https://hub.fastgit.org/tpope/vim-surround.git
+[submodule ".vim/pack/extension/start/nerdtree"]
+	path = .vim/pack/extension/start/nerdtree
+	url = https://hub.fastgit.org/preservim/nerdtree.git
+[submodule ".vim/pack/game/opt/killersheep"]
+	path = .vim/pack/game/opt/killersheep
+	url = https://hub.fastgit.org/vim/killersheep.git
+[submodule ".vim/pack/combine/start/fzf.vim"]
+	path = .vim/pack/combine/start/fzf.vim
+	url = https://hub.fastgit.org/junegunn/fzf.vim.git
+[submodule ".vim/pack/syntax/start/vim-polyglot"]
+	path = .vim/pack/syntax/start/vim-polyglot
+	url = https://hub.fastgit.org/sheerun/vim-polyglot.git

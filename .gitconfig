@@ -41,5 +41,3 @@
 	templatedir = ~/.git-templates
 [core]
         editor = vim
-[http]
-	proxy = http://localhost:1809
