@@ -9,11 +9,11 @@
 	decorate = auto
 [merge]
 	ff = only
-        tool = vimdiff
-        conflictstyle = diff3
-        defaultToUpstream = true
+	tool = vimdiff
+	conflictstyle = diff3
+	defaultToUpstream = true
 [mergetool]
-        prompt = false
+	prompt = false
 [push]
 	default = simple
 [alias]
@@ -23,21 +23,29 @@
 	br = branch
 	ci = commit
 	ca = commit --amend
+	sh = show
+	sl = show HEAD
 	df = diff
 	dc = diff --cached
 	st = status
-	ra = reset HEAD --
+	us = reset HEAD --
 	rh = reset --hard
 	fp = format-patch
 	mg = merge
 	rv = revert
-	lg = log --name-status
+	lo = log --decorate
+	lg = git log --graph --oneline --decorate --all
+	gr = log --decorate --graph --oneline --all
 	cp = cherry-pick
 	af = am --reject --whitespace=fix
 	mt = mergetool
-[core]
-	editor = vim
 [init]
 	templatedir = ~/.git-templates
 [core]
-        editor = vim
+	editor = vim
+	excludesfile = ~/.gitignore
+# [url "https://hub.fastgit.org/"]
+[url "https://github.com.cnpmjs.org/"]
+	insteadOf = https://github.com/
+[protocol "http"]
+	allow = always

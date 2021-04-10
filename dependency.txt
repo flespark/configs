@@ -3,4 +3,5 @@ fd-find
 xsel
 ripgrep
 powerline-go
-
+clangd
+shellcheck

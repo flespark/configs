@@ -29,7 +29,7 @@
 	path = .vim/pack/profile/opt/dracula-theme
 	url = https://hub.fastgit.org/dracula/dracula-theme.git
 [submodule ".vim/pack/profile/opt/vim-airline-themes"]
-	path = .vim/pack/profile/opt/vim-airline-themes
+	path = .vim/pack/profile/start/vim-airline-themes
 	url = https://hub.fastgit.org/vim-airline/vim-airline-themes.git
 [submodule ".vim/pack/extension/start/editorconfig-vim"]
 	path = .vim/pack/extension/start/editorconfig-vim
@@ -49,3 +49,6 @@
 [submodule ".vim/pack/syntax/start/vim-polyglot"]
 	path = .vim/pack/syntax/start/vim-polyglot
 	url = https://hub.fastgit.org/sheerun/vim-polyglot.git
+[submodule ".vim/pack/extension/opt/auto-pairs"]
+	path = .vim/pack/extension/opt/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git

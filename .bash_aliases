@@ -1,24 +1,32 @@
+# file system
+alias sl='ls'
 alias ll='ls -alF'
 alias lf='ls -d'
-alias lt='ls -lt'
+alias lt='ls -hlt'
 alias la='ls -A'
-alias l='ls -CF'
-alias md='mkdir'
+alias l='ll -h'
+alias md='mkdir -p'
+alias df='df -h'
+alias rf='readlink -f'
 
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias rcp="rsync -avuz"
+
+# other tools
 alias mk='make'
-alias ta='tmux attach 2>/null || tmux'
+alias ta='tmux attach 2>/dev/null || tmux'
 alias vd='vimdiff'
 alias lr='less -r'
-alias rf='readlink -f'
 alias gd='git diff --no-index'
 alias path='echo -e ${PATH//:/\\n}'
 alias gc='git clone'
 alias cx='cd `git rev-parse --show-toplevel`'
+alias myip='curl -s http://myip.ipip.net'
+
 
 if [ $(type -P fd-find && alias fd='fd-find' || type -P fd) &>/dev/null ];then
 	alias fd2='fd -d 2'

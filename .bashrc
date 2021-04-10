@@ -1,4 +1,7 @@
 
+# correct the spell error in cd command
+shopt -s cdspell
+
 PS1='\[\033[0;31m\]\A \[\033[32m\]\W \[\033[36m\]>\[\033[00m\]'
 
 if [ -f ~/.bash_aliases ]; then
