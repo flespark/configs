@@ -1,0 +1,69 @@
+[user]
+	name = flespark
+	email = 0860734llx@gmail.com
+[credential]
+	helper = store
+[color]
+	ui = auto
+[log]
+	decorate = auto
+[merge]
+	ff = only
+	tool = vimdiff
+	conflictstyle = diff3
+	defaultToUpstream = true
+[mergetool]
+	prompt = false
+[push]
+	default = simple
+[alias]
+	a = add
+	aa = add -A
+	ac = add .
+	ad = add -u
+	af = am --reject --whitespace=fix
+	br = branch
+	bv = branch -vv
+	cl = config -l
+	cm = commit
+	cma = commit --amend
+	cmm = commit -m
+	co = checkout
+	cp = cherry-pick
+	dc = diff --cached
+	df = diff
+	fp = format-patch
+	ft = fetch
+	gp = log --graph --date=short --format=\"%C(yellow)%h%C(reset) %C(magenta)%cd %C(auto)%d%C(reset) %s  %C(cyan)@%an%C(reset)\"
+	gr = log --decorate --graph --oneline --all
+	lg = git log --graph --oneline --decorate --all
+	ls = log --decorate --name-status
+	mg = merge
+	mt = mergetool
+	pl = pull
+	ps = push
+	rh = reset --hard
+	rt = rev-parse --show-toplevel
+	rv = remote -v
+	sh = show
+	sl = show HEAD
+	st = status
+	us = reset HEAD --
+[init]
+	defaultBranch = main
+	templatedir = ~/.git-templates
+[core]
+	editor = vim
+# convert line ending in windows but not linux
+	autocrlf = false
+	attributesfile = ~/.gitattributes
+	excludesfile = ~/.gitignore
+# [url "https://hub.fastgit.org/"]
+# [url "https://github.com.cnpmjs.org/"]
+#	insteadOf = https://github.com/
+# [http]
+# 	proxy = http://127.0.0.1:8889
+# [https]
+# 	proxy = http://127.0.0.1:8889
+[protocol "http"]
+	allow = always

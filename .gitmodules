@@ -1,57 +1,57 @@
-[submodule ".tmux/plugins/tpm"]
-	path = .tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
-#[submodule ".tmux/plugins/tmux-colors-solarized"]
-#	path = .tmux/plugins/tmux-colors-solarized
-#	url = https://github.com/seebi/tmux-colors-solarized.git
-#[submodule ".tmux/plugins/tmux-sensible"]
-#	path = .tmux/plugins/tmux-sensible
-#	url = https://github.com/tmux-plugins/tmux-sensible.git
-#[submodule ".tmux/plugins/tmux-copycat"]
-#	path = .tmux/plugins/tmux-copycat
-#	url = https://github.com/tmux-plugins/tmux-copycat.git
-#[submodule ".tmux/plugins/extrakto"]
-#	path = .tmux/plugins/extrakto
-#	url = https://github.com/laktak/extrakto.git
-[submodule ".vim/pack/combine/start/vim-fugitive"]
-	path = .vim/pack/combine/start/vim-fugitive
+[submodule "linux/.tmux/plugins/g/tpm"]
+	path = linux/.tmux/plugins/g/tpm
+	url = https://hub.fastgit.com/tmux-plugins/tpm.git
+#[submodule "linux/.tmux/plugins/g/tmux-colors-solarized"]
+#	path = linux/.tmux/plugins/g/tmux-colors-solarized
+#	url = https://hub.fastgit.com/seebi/tmux-colors-solarized.git
+#[submodule "linux/.tmux/plugins/g/tmux-sensible"]
+#	path = linux/.tmux/plugins/g/tmux-sensible
+#	url = https://hub.fastgit.com/tmux-plugins/tmux-sensible.git
+#[submodule "linux/.tmux/plugins/g/tmux-copycat"]
+#	path = linux/.tmux/plugins/g/tmux-copycat
+#	url = https://hub.fastgit.com/tmux-plugins/tmux-copycat.git
+#[submodule "linux/.tmux/plugins/g/extrakto"]
+#	path = linux/.tmux/plugins/g/extrakto
+#	url = https://hub.fastgit.com/laktak/extrakto.git
+[submodule "common/.vim/pack/combine/start/vim-fugitive"]
+	path = common/.vim/pack/combine/start/vim-fugitive
 	url = https://hub.fastgit.org/tpope/vim-fugitive.git
-[submodule ".vim/pack/combine/start/asyncrun.vim"]
-	path = .vim/pack/combine/start/asyncrun.vim
+[submodule "common/.vim/pack/combine/start/asyncrun.vim"]
+	path = common/.vim/pack/combine/start/asyncrun.vim
 	url = https://hub.fastgit.org/skywind3000/asyncrun.vim.git
-[submodule ".vim/pack/extension/start/ale"]
-	path = .vim/pack/extension/start/ale
+[submodule "common/.vim/pack/extension/start/ale"]
+	path = common/.vim/pack/extension/start/ale
 	url = https://hub.fastgit.org/dense-analysis/ale.git
-[submodule ".vim/pack/profile/start/vim-airline"]
-	path = .vim/pack/profile/start/vim-airline
+[submodule "common/.vim/pack/profile/start/vim-airline"]
+	path = common/.vim/pack/profile/start/vim-airline
 	url = https://hub.fastgit.org/vim-airline/vim-airline.git
-[submodule ".vim/pack/profile/opt/dracula-theme"]
-	path = .vim/pack/profile/opt/dracula-theme
+[submodule "common/.vim/pack/profile/opt/dracula-theme"]
+	path = common/.vim/pack/profile/opt/dracula-theme
 	url = https://hub.fastgit.org/dracula/dracula-theme.git
-[submodule ".vim/pack/profile/opt/vim-airline-themes"]
-	path = .vim/pack/profile/start/vim-airline-themes
+[submodule "common/.vim/pack/profile/opt/vim-airline-themes"]
+	path = common/.vim/pack/profile/start/vim-airline-themes
 	url = https://hub.fastgit.org/vim-airline/vim-airline-themes.git
-[submodule ".vim/pack/extension/start/editorconfig-vim"]
-	path = .vim/pack/extension/start/editorconfig-vim
+[submodule "common/.vim/pack/extension/start/editorconfig-vim"]
+	path = common/.vim/pack/extension/start/editorconfig-vim
 	url = https://hub.fastgit.org/editorconfig/editorconfig-vim.git
-[submodule ".vim/pack/extension/start/vim-surround"]
-	path = .vim/pack/extension/start/vim-surround
+[submodule "common/.vim/pack/extension/start/vim-surround"]
+	path = common/.vim/pack/extension/start/vim-surround
 	url = https://hub.fastgit.org/tpope/vim-surround.git
-[submodule ".vim/pack/extension/start/nerdtree"]
-	path = .vim/pack/extension/start/nerdtree
+[submodule "common/.vim/pack/extension/start/nerdtree"]
+	path = common/.vim/pack/extension/start/nerdtree
 	url = https://hub.fastgit.org/preservim/nerdtree.git
-[submodule ".vim/pack/game/opt/killersheep"]
-	path = .vim/pack/game/opt/killersheep
+[submodule "common/.vim/pack/game/opt/killersheep"]
+	path = common/.vim/pack/game/opt/killersheep
 	url = https://hub.fastgit.org/vim/killersheep.git
-[submodule ".vim/pack/combine/start/fzf.vim"]
-	path = .vim/pack/combine/start/fzf.vim
+[submodule "common/.vim/pack/combine/start/fzf.vim"]
+	path = common/.vim/pack/combine/start/fzf.vim
 	url = https://hub.fastgit.org/junegunn/fzf.vim.git
-[submodule ".vim/pack/syntax/start/vim-polyglot"]
-	path = .vim/pack/syntax/start/vim-polyglot
+[submodule "common/.vim/pack/syntax/start/vim-polyglot"]
+	path = common/.vim/pack/syntax/start/vim-polyglot
 	url = https://hub.fastgit.org/sheerun/vim-polyglot.git
-[submodule ".vim/pack/extension/opt/auto-pairs"]
-	path = .vim/pack/extension/opt/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule ".vim/pack/extension/opt/vim-easymotion"]
-	path = .vim/pack/extension/opt/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion
+[submodule "common/.vim/pack/extension/opt/auto-pairs"]
+	path = common/.vim/pack/extension/opt/auto-pairs
+	url = https://hub.fastgit.com/jiangmiao/auto-pairs.git
+[submodule "common/.vim/pack/extension/opt/vim-easymotion"]
+	path = common/.vim/pack/extension/opt/vim-easymotion
+	url = https://hub.fastgit.com/easymotion/vim-easymotion
