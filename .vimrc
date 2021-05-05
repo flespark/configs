@@ -11,7 +11,7 @@ set incsearch
 colorscheme jellybeans
 filetype plugin indent on
 set cursorline
-" turn off auto line feed display
+" disable auto line feed
 set nowrap
 set hlsearch
 set showmatch
@@ -29,7 +29,7 @@ set foldenable
 set foldmethod=indent
 set foldlevel=99
 
-" take away from arrow key
+" get off arrow key
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <right> <nop>
@@ -45,6 +45,7 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 3/4)<CR>
 nnoremap <silent> <leader>p :set paste!<cr>
 nnoremap <esc><esc> :nohlsearch<return><esc>
 nnoremap <silent> <leader>l <esc>:set norelativenumber! nonumber!<cr>
+" clean trailing whitspace
 nnoremap <silent> <F12> :let _s=@/ <bar> :%s/\s\+$//e <bar> :let @/=_s <bar> :nohl <bar> :unlet _s <cr>
 inoremap jj <esc>
 " not auto indent when comment
@@ -81,3 +82,10 @@ nn <silent> <M-d> :ALEGoToDefinition<cr>
 nn <silent> <M-r> :ALEFindReferences<cr>
 nn <silent> <M-a> :ALESymbolSearch<cr>
 "nn <silent> <M-h> :ALEHover<cr>
+
+" autopair
+packadd! auto-pairs
+
+" easymotion
+packadd! vim-easymotion
+map <Leader><Leader> <Plug>(easymotion-prefix)

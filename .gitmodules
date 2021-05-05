@@ -52,3 +52,6 @@
 [submodule ".vim/pack/extension/opt/auto-pairs"]
 	path = .vim/pack/extension/opt/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule ".vim/pack/extension/opt/vim-easymotion"]
+	path = .vim/pack/extension/opt/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
