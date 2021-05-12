@@ -87,7 +87,7 @@ command_install() {
     distro=$(cat /etc/issue | cut -f 2 | xargs)
     machtype=$(uname -m)
     # TODO: support any machine
-    if [ $machtype -ne x86_64 ]; then
+    if [ $machtype = x86_64 ]; then
         echo "${FUNCNAME[0]} only support x86_64 machine" >2
         return 1
     fi
@@ -99,9 +99,9 @@ command_install() {
         echo "${FUNCNAME[0]} get ip info fail" >2
         return 1
     fi
-    
+
     # TODO: nearby mirrors selection
-    if [ ${ip_info[2]} -e "CN" ]; then
+    if [ ${ip_info[2]} = "CN" ]; then
         case $distro in
             Debian)
                 mv /etc/apt/source.list /etc/apt/source.list.bak
@@ -112,9 +112,10 @@ command_install() {
                 cp etc/apt/tencent.ubuntu.list /etc/apt/source.list
                 ;;
             Arch)
+                sed -i '7 i Server = https://mirrors.cloud.tencent.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
                 ;;
             *)
-                echo "unsupport distro, please change package source manuall" >2
+                echo "unsupport distro, please change package source manually" >2
                 ;;
         esac
     fi
@@ -122,15 +123,16 @@ command_install() {
     # ubuntu borrow package from debian unstable
     if [ $distro -e Ubuntu ];then
         apt install add-apt-key
-        cat <<- EOF >>/etc/apt/source.list
-        deb https://mirrors.cloud.tencent.com/debian/ unstable main contrib non-free
-        deb-src https://mirrors.cloud.tencent.com/debian/ unstable main contrib non-free
-        EOF
-        wget -O - https://ftp-master.debian.org/keys/archieve-key-10.asc | sudo apt-key add -
+        cat <<- _EOF_ >>/etc/apt/source.list
+		deb https://mirrors.cloud.tencent.com/debian/ unstable main contrib non-free
+		deb-src https://mirrors.cloud.tencent.com/debian/ unstable main contrib non-free
+		_EOF_
+		# refer to: https://wiki.debian.org/SecureApt
+        wget -O - https://ftp-master.debian.org/keys/archive-key-10.asc | sudo apt-key add -
     fi
-        
+
     case $distro in
-        Debain|Ubuntu)
+        Debian|Ubuntu)
             apt-get update
             while read pkg; do
                 apt install -y $pkg
@@ -140,14 +142,14 @@ command_install() {
             # FIXME: pacman use different pkg name
             pacman -Syu
             while read pkg; do
-                pacman -Sy $pkg
+                pacman --noconfirm -S $pkg
             done < depedency.txt
             ;;
     esac
 }
 
 infect() {
-    pushd $(dirname "{$BASH_SOURCE[0]}")
+    pushd $(dirname "${BASH_SOURCE[0]}")
     pushd $(git rev-parse --show-toplevel)
     git submodule init
     git submodule update
@@ -159,3 +161,5 @@ infect() {
     tmux_setup
     popd
 }
+
+infect
