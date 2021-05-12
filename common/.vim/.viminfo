@@ -11,16 +11,16 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/commetary
+~MSle0~/us =
 
 # Last Substitute String:
 $
 
 # Command Line History (newest to oldest):
-:wq
-|2,0,1620802906,,"wq"
 :q
-|2,0,1620802696,,"q"
+|2,0,1620804957,,"q"
+:wq
+|2,0,1620804489,,"wq"
 :w
 |2,0,1620799827,,"w"
 :packadd! vim-easymotion
@@ -41,6 +41,18 @@ $
 |2,0,1620434223,,"h viminfo"
 
 # Search String History (newest to oldest):
+?/us =
+|2,1,1620804869,47,"us ="
+?/achiv
+|2,1,1620804809,47,"achiv"
+?/us
+|2,1,1620804693,47,"us"
+?/rese
+|2,1,1620803916,47,"rese"
+??chec
+|2,1,1620803309,63,"chec"
+?/rh
+|2,1,1620803277,47,"rh"
 ??commetary
 |2,1,1620801863,63,"commetary"
 ?/merge
@@ -70,8 +82,8 @@ $
 
 # Registers:
 "0	LINE	0
-	bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -i -f -selection primary | xclip -i -selection clipboard"
-|3,0,0,1,1,0,1620799552,"bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel \"xclip -i -f -selection primary | xclip -i -selection clipboard\""
+		sl = stash ls
+|3,0,0,1,1,0,1620804122,"	sl = stash ls"
 "1	LINE	0
 	xsel
 |3,0,1,1,1,0,1620799635,"xsel"
@@ -118,29 +130,52 @@ $
 	set paste
 |3,0,9,1,1,0,1620651258,"set paste"
 ""-	CHAR	0
-	e
-|3,1,36,0,1,0,1620799949,"e"
+	s
+|3,1,36,0,1,0,1620804458,"s"
 
 # Buffer list:
-%~/project/configs/.gitmodules	28	1
+%~/project/configs/common/.vimrc	57	0
 
 # History of marks within files (newest to oldest):
 
-> ~/project/configs/.gitmodules
-	*	1620802905	0
-	"	28	1
+> ~/project/configs/common/.vimrc
+	*	1620804957	0
+	"	57	0
 
-> ~/.tmux.conf
-	*	1620801428	0
-	"	2	0
+> ~/project/configs/common/.gitconfig
+	*	1620804872	0
+	"	58	5
+	^	55	16
+	.	55	15
+	+	32	16
+	+	46	15
+	+	47	2
+	+	54	10
+	+	55	13
+	+	56	16
+	+	50	13
+	+	34	23
+	+	55	15
 
 > ~/project/configs/linux/setup.sh
-	*	1620799951	0
-	"	131	58
+	*	1620804821	0
+	"	113	16
 	^	130	47
 	.	131	58
 	+	130	46
 	+	131	58
+
+> ~/project/configs/.gitmodules
+	*	1620803864	0
+	"	60	1
+
+> ~/project/configs/tmp_gitmodules
+	*	1620803841	0
+	"	29	1
+
+> ~/.tmux.conf
+	*	1620803698	0
+	"	3	0
 
 > ~/project/configs/linux/dependency.txt
 	*	1620799641	0
@@ -174,29 +209,3 @@ $
 > ~/playground/git-practice/.git/MERGE_MSG
 	*	1620704380	0
 	"	1	0
-
-> ~/playground/git-practice/os_info.py
-	*	1620703815	0
-	"	7	36
-	^	7	37
-	.	7	36
-	+	1	22
-	+	3	9
-	+	5	0
-	+	6	17
-	+	4	14
-	+	7	36
-
-> ~/playground/git-practice/mm.txt
-	*	1620702972	0
-	"	3	2
-	^	3	3
-	.	3	2
-	+	3	2
-
-> ~/.ssh/config
-	*	1620701242	0
-	"	19	14
-	^	8	14
-	.	8	13
-	+	8	13

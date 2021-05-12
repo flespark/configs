@@ -2,19 +2,21 @@
 set backspace=
 set nocompatible
 set autoindent
-set nowrap
 set relativenumber number
 syntax on
 set showmatch
 set ignorecase smartcase
 set incsearch
 colorscheme jellybeans
+hi normal guibg=NONE ctermbg=NONE
+hi endofbuffer guibg=NONE ctermbg=NONE
 filetype plugin indent on
 set cursorline
 " disable auto line feed
 set nowrap
 set hlsearch
 set showmatch
+set paste
 " hide buffer when switch
 set hidden
 set fileformat=unix
@@ -28,6 +30,17 @@ let mapleader = "\<space>"
 set foldenable
 set foldmethod=indent
 set foldlevel=99
+
+set undofile
+set undodir=~/.vim/undo
+set viminfo=%,<100,'10,/50,:100,h,f0,n~/.vim/.viminfo
+" manually save/load view
+" set viewoptions=folds,cursor,curdir
+" manually save/load session
+" set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+set directory=~/.vim/swap
+set backup
+set backupdir=~/.vim/backup
 
 " get off arrow key
 noremap <up> <nop>
@@ -67,7 +80,7 @@ let g:airline_theme = 'jellybeans'
 " ale
 let g:ale_linters = {
 \       'c': ['clangd'],
-\       'bash': ['shellcheck'],
+\       'sh': ['shellcheck'],
 \       'python': ['pylint'],
 \}
 let g:ale_linters_explicit = 1
