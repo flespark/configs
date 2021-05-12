@@ -1,9 +1,0 @@
-# All platforms
-*.rej
-*.orig
-*.mo
-*.swp
-*~
-
-# Mac OSX
-.DS_Store

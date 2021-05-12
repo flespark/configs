@@ -55,3 +55,6 @@
 [submodule "common/.vim/pack/extension/opt/vim-easymotion"]
 	path = common/.vim/pack/extension/opt/vim-easymotion
 	url = https://hub.fastgit.com/easymotion/vim-easymotion
+[submodule "common/.vim/pack/extension/start/vim-commentary"]
+	path = common/.vim/pack/extension/start/vim-commentary
+	url = https://hub.fastgit.org/tpope/vim-commetary
