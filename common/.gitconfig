@@ -29,8 +29,9 @@
 	cma = commit --amend
 	cmm = commit -m
 	co = checkout
+	ch = checkout --
 	cp = cherry-pick
-	dc = diff --cached
+	dc = diff --name-status --cached
 	df = diff
 	fp = format-patch
 	ft = fetch
@@ -42,12 +43,17 @@
 	mt = mergetool
 	pl = pull
 	ps = push
-	rh = reset --hard
+	rh = reset HEAD
+	rs = reset --hard
 	rt = rev-parse --show-toplevel
 	rv = remote -v
+	s = status -s
 	sh = show
 	sl = show HEAD
 	st = status
+	ss = stash
+	sl = stash list
+	sa = stash apply
 	us = reset HEAD --
 [init]
 	defaultBranch = main

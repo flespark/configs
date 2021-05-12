@@ -19,6 +19,7 @@ alias .....="cd ../../../.."
 alias rcp='rsync -avuz'
 
 # other tools
+alias vi='vim'
 alias mk='make'
 alias ta='tmux attach 2>/dev/null || tmux'
 alias vd='vimdiff'
@@ -30,11 +31,16 @@ alias cx='cd `git rev-parse --show-toplevel`'
 alias myip='curl -s http://myip.ipip.net'
 
 
-if [ $(type -P fdfind && alias fd='fdfind' || type -P fd) &>/dev/null ];then
+if type -P fdfind; then
+	alias fd='fdfind'
 	alias fd2='fd -d 2'
 	alias fd3='fd -d 3'
 	alias fd4='fd -d 4'
 	alias fd5='fd -d 5'
+	alias fd2='fd -uud 2'
+	alias fd3='fd -uud 3'
+	alias fd4='fd -uud 4'
+	alias fd5='fd -uud 5'
 else
 	alias fd2='find -maxdepth 2 -name'
 	alias fd3='find -maxdepth 3 -name'
@@ -42,7 +48,7 @@ else
 	alias fd5='find -maxdepth 5 -name'
 fi
 
-if type -P rg &>/dev/null;then
+if type -P rg &>/dev/null; then
 	alias gg='rg -inS -e'
 	alias gw='rg -inw -e'
 	alias gf='rg -inF -e'
@@ -53,3 +59,8 @@ else
 	alias gf='grep -inrIF ./ -e'
 fi
 
+
+# dbg tools
+if type -P valgrid; then
+	alias vg='valgrind --leak-check=full --show-lead-kinds=all --track-origins=yes --verbose --log-file=valgrid-out.txt'
+fi

@@ -33,9 +33,9 @@ if fd -V &>/dev/null;then
 	}
 
 fi
+	#load fzf default config
+	. ~/.fzf/key-bindings.bash
+	. ~/.fzf/completion.bash
 
 fi
 
-#load fzf default config
-. ~/.fzf/key-bindings.bash
-. ~/.fzf/completion.bash

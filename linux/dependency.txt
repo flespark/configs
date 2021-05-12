@@ -2,7 +2,7 @@ build-essentials
 vim
 fzf
 fd-find
-xsel
+xclip
 ripgrep
 powerline-go
 clangd
