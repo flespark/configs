@@ -1,6 +1,6 @@
 [submodule "linux/.tmux/plugins/g/tpm"]
 	path = linux/.tmux/plugins/g/tpm
-	url = https://hub.fastgit.com/tmux-plugins/tpm.git
+	url = https://hub.fastgit.org/tmux-plugins/tpm.git
 #[submodule "linux/.tmux/plugins/g/tmux-colors-solarized"]
 #	path = linux/.tmux/plugins/g/tmux-colors-solarized
 #	url = https://hub.fastgit.com/seebi/tmux-colors-solarized.git
@@ -51,10 +51,11 @@
 	url = https://hub.fastgit.org/sheerun/vim-polyglot.git
 [submodule "common/.vim/pack/extension/opt/auto-pairs"]
 	path = common/.vim/pack/extension/opt/auto-pairs
-	url = https://hub.fastgit.com/jiangmiao/auto-pairs.git
+	url = https://hub.fastgit.org/jiangmiao/auto-pairs.git
 [submodule "common/.vim/pack/extension/opt/vim-easymotion"]
 	path = common/.vim/pack/extension/opt/vim-easymotion
-	url = https://hub.fastgit.com/easymotion/vim-easymotion
+	url = https://hub.fastgit.org/easymotion/vim-easymotion
 [submodule "common/.vim/pack/extension/start/vim-commentary"]
 	path = common/.vim/pack/extension/start/vim-commentary
-	url = https://hub.fastgit.org/tpope/vim-commetary
+	url = https://hub.fastgit.org/tpope/vim-commentary
+
