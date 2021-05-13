@@ -31,7 +31,8 @@
 	co = checkout
 	ch = checkout --
 	cp = cherry-pick
-	dc = diff --name-status --cached
+	dc = diff --cached
+	dcn = diff --name-status --cached
 	df = diff
 	fp = format-patch
 	ft = fetch
@@ -47,6 +48,7 @@
 	rs = reset --hard
 	rt = rev-parse --show-toplevel
 	rv = remote -v
+	rso = remote set-url origin
 	s = status -s
 	sh = show
 	sl = show HEAD

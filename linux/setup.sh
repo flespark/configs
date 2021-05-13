@@ -27,6 +27,7 @@ bash_setup() {
 
 vim_setup() {
     local features
+    echo > .vim/.viminfo
     features=$(vim --version | sed -n -e '/+job/p' -e '/+channel/p' -e '/+timers/p' | wc -l)
     if ((features == 3)); then
         if [ -f $HOME/.vimrc ]; then
@@ -149,16 +150,18 @@ command_install() {
 }
 
 infect() {
-    pushd $(dirname "${BASH_SOURCE[0]}")
     pushd $(git rev-parse --show-toplevel)
     git submodule init
     git submodule update
-    popd
+    pushd $(dirname "${BASH_SOURCE[0]}")
     command_install
     bash_setup
+    tmux_setup
+    popd
+    push common
     git_setup
     vim_setup
-    tmux_setup
+    popd
     popd
 }
 
