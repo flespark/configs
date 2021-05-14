@@ -1,17 +1,17 @@
-[submodule "linux/.tmux/plugins/g/tpm"]
-	path = linux/.tmux/plugins/g/tpm
+[submodule "linux/.tmux/plugins/tpm"]
+	path = linux/.tmux/plugins/tpm
 	url = https://hub.fastgit.org/tmux-plugins/tpm.git
-#[submodule "linux/.tmux/plugins/g/tmux-colors-solarized"]
-#	path = linux/.tmux/plugins/g/tmux-colors-solarized
+#[submodule "linux/.tmux/plugins/tmux-colors-solarized"]
+#	path = linux/.tmux/plugins/tmux-colors-solarized
 #	url = https://hub.fastgit.com/seebi/tmux-colors-solarized.git
-#[submodule "linux/.tmux/plugins/g/tmux-sensible"]
-#	path = linux/.tmux/plugins/g/tmux-sensible
+#[submodule "linux/.tmux/plugins/tmux-sensible"]
+#	path = linux/.tmux/plugins/tmux-sensible
 #	url = https://hub.fastgit.com/tmux-plugins/tmux-sensible.git
-#[submodule "linux/.tmux/plugins/g/tmux-copycat"]
-#	path = linux/.tmux/plugins/g/tmux-copycat
+#[submodule "linux/.tmux/plugins/tmux-copycat"]
+#	path = linux/.tmux/plugins/tmux-copycat
 #	url = https://hub.fastgit.com/tmux-plugins/tmux-copycat.git
-#[submodule "linux/.tmux/plugins/g/extrakto"]
-#	path = linux/.tmux/plugins/g/extrakto
+#[submodule "linux/.tmux/plugins/extrakto"]
+#	path = linux/.tmux/plugins/extrakto
 #	url = https://hub.fastgit.com/laktak/extrakto.git
 [submodule "common/.vim/pack/combine/start/vim-fugitive"]
 	path = common/.vim/pack/combine/start/vim-fugitive
@@ -54,8 +54,8 @@
 	url = https://hub.fastgit.org/jiangmiao/auto-pairs.git
 [submodule "common/.vim/pack/extension/opt/vim-easymotion"]
 	path = common/.vim/pack/extension/opt/vim-easymotion
-	url = https://hub.fastgit.org/easymotion/vim-easymotion
+	url = https://hub.fastgit.org/easymotion/vim-easymotion.git
 [submodule "common/.vim/pack/extension/start/vim-commentary"]
 	path = common/.vim/pack/extension/start/vim-commentary
-	url = https://hub.fastgit.org/tpope/vim-commentary
+	url = https://hub.fastgit.org/tpope/vim-commentary.git
 
