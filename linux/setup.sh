@@ -137,17 +137,34 @@ command_install() {
             apt-get update
             while read pkg; do
                 apt install -y $pkg
-            done < depedency.txt
+            done < apt.pkglist
             ;;
         Arch)
             # FIXME: pacman use different pkg name
             pacman -Syu
             while read pkg; do
                 pacman --noconfirm -S $pkg
-            done < depedency.txt
+            done < pacman.pkglist
             ;;
     esac
 }
+
+tldr_setup() {
+	if [ -f ~/.tldrrc ]; then
+		echo "tldr config file exit, return"
+		return 0
+	fi
+	if ! type -P tldr; then
+		echo "tldr cmd not find, return"
+		return 1
+	fi
+	repo="$(readlink -f source/tldr)"
+	cp .tldrrc $HOME/
+	sed -i "s|\(repo_directory:\).*|\1 $repo|g" $HOME/.tldrrc
+	tldr reindex
+	tldr update
+}
+
 
 infect() {
     pushd $(git rev-parse --show-toplevel)

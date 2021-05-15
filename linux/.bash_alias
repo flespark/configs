@@ -65,3 +65,7 @@ fi
 if type -P valgrid; then
 	alias vg='valgrind --leak-check=full --show-lead-kinds=all --track-origins=yes --verbose --log-file=valgrid-out.txt'
 fi
+
+if type -P tldr; then
+	alias tf='fldr find'
+fi
