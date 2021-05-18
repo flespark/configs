@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 read_bool() {
     if (($# == 1));then
         read -p "$1 [Y/n] >"
@@ -16,10 +18,10 @@ read_bool() {
 bash_setup() {
     test -f $HOME/.bashrc && \
         cat $HOME/.bashrc .bashrc > $HOME/.bashrc || \
-        printf "$HOME/.bashrc not find, exit!"; exit 1
+        echo "$HOME/.bashrc not find, exit!" >&2; exit 1
     for bash_file in .inputrc .bash_*; do
        test -f "$HOME/$bash_file" && \
-           printf "bash_file: %s exist" "$bash_file" || \
+           printf "bash_file: %s exist\n" "$bash_file" || \
            ln -srL "$bash_file" "$HOME/"
     done
     . ~/.bashrc
@@ -82,14 +84,14 @@ command_install() {
     declare -a ip_info
 
     if [ $(whoami) != root ];then
-        echo "${FUNCNAME[0]} need root privilege" >2
+        echo "${FUNCNAME[0]} need root privilege" >&2
         return 1;
     fi
     distro=$(cat /etc/issue | cut -f 2 | xargs)
     machtype=$(uname -m)
     # TODO: support any machine
     if [ $machtype = x86_64 ]; then
-        echo "${FUNCNAME[0]} only support x86_64 machine" >2
+        echo "${FUNCNAME[0]} only support x86_64 machine" >&2
         return 1
     fi
     # ip info format
@@ -97,7 +99,7 @@ command_install() {
     # TODO: alternative json parse
     read -r -a ip_info <<< "$(curl -s -m2 https://api.myip.la/en?toml)"
     if (( ${#ip_info[@]} < 6 )); then
-        echo "${FUNCNAME[0]} get ip info fail" >2
+        echo "${FUNCNAME[0]} get ip info fail" >&2
         return 1
     fi
 
@@ -116,7 +118,7 @@ command_install() {
                 sed -i '7 i Server = https://mirrors.cloud.tencent.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
                 ;;
             *)
-                echo "unsupport distro, please change package source manually" >2
+                echo "unsupport distro, please change package source manually" >&2
                 ;;
         esac
     fi
