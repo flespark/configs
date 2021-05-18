@@ -58,7 +58,6 @@
 [submodule "common/.vim/pack/extension/start/vim-commentary"]
 	path = common/.vim/pack/extension/start/vim-commentary
 	url = https://hub.fastgit.org/tpope/vim-commentary.git
-
 [submodule "linux/source/tldr-pages"]
 	path = linux/source/tldr-pages
 	url = https://hub.fastgit.org/tldr-pages/tldr.git

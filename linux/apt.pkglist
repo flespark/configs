@@ -1,4 +1,5 @@
 build-essentials
+python3
 vim
 fzf
 fd-find
@@ -7,3 +8,4 @@ ripgrep
 powerline-go
 clangd
 shellcheck
+tldr-py

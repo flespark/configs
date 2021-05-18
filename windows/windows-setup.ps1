@@ -34,16 +34,28 @@ scoop bucket add \
 scoop install \
 	v2ray \
 	qv2ray \
+    aria2 \
+    sudo \
     vim \
+    busybox \
+    windows-terminal \
     sumatrapdf \
     everything \
     winpython \
+    adoptopenjdk-lts-hotspot \
 	vscode \
     windows-terminal \
     alacritty \
+    etcher \
 	notepad3 \
 	googlechrome-bata \
-	telegram
+	telegram \
+    anki@2.1.15 \
+    picgo \
+    nodejs \
+    yarn \
+    vlc \
+    rufus
 scoop install --global \
     firacode \
     JetBrains-Mono \

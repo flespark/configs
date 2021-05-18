@@ -96,7 +96,7 @@ command_install() {
     # ip    cn_code country province    city    latitude    longtigude
     # TODO: alternative json parse
     read -r -a ip_info <<< "$(curl -s -m2 https://api.myip.la/en?toml)"
-    if (( ${#ip_info[@]} < 6 )) then
+    if (( ${#ip_info[@]} < 6 )); then
         echo "${FUNCNAME[0]} get ip info fail" >2
         return 1
     fi
@@ -154,7 +154,7 @@ tldr_setup() {
 		echo "tldr config file exit, return"
 		return 0
 	fi
-	if ! type -P tldr; then
+	if ! type -P tldr >/dev/null; then
 		echo "tldr cmd not find, return"
 		return 1
 	fi

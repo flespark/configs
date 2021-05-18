@@ -16,7 +16,8 @@ set cursorline
 set nowrap
 set hlsearch
 set showmatch
-set paste
+" paste mode will obstruct auto-pairs, use shortkey
+" set paste
 " hide buffer when switch
 set hidden
 set fileformat=unix
@@ -47,7 +48,7 @@ noremap <up> <nop>
 noremap <down> <nop>
 noremap <right> <nop>
 noremap <left> <nop>
-" defend error type lead mess
+" ban useless key prone to hit
 noremap <U> <nop>
 noremap <K> <nop>
 " set undo breakpoint for unintentional C-w & C-u
@@ -91,12 +92,15 @@ let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nn <silent> <M-d> :ALEGoToDefinition<cr>
 nn <silent> <M-r> :ALEFindReferences<cr>
 nn <silent> <M-a> :ALESymbolSearch<cr>
 "nn <silent> <M-h> :ALEHover<cr>
 
 " autopair
+" let g:AutoPairsFlyMode = 1
 packadd! auto-pairs
 
 " easymotion
