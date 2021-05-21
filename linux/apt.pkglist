@@ -1,11 +1,10 @@
-build-essentials
+build-essential
 python3
 vim
 fzf
 fd-find
 xclip
 ripgrep
-powerline-go
 clangd
 shellcheck
 tldr-py

@@ -1,9 +1,17 @@
 #!/bin/bash
 
+##############################
+# TODO LIST:
+# swith shell prompt to starship
+# bash config reentry defence 
+# switch tmux system to .tmux or tmuxp
+#############################
 set -e
+thold=70
+RPATH="${BASH_SOURCE[0]}"
 
 read_bool() {
-    if (($# == 1));then
+    if (($# == 1)); then
         read -p "$1 [Y/n] >"
         if [[ "$REPLY" =~ [Yy] ]]; then
             return 0
@@ -15,14 +23,43 @@ read_bool() {
     fi
 }
 
+# $1 src
+# $2 merge dst
+overlap_check() {
+    local ldst lsame
+    if (( $# == 2 )) && [ -f "$1" ] && [ -f "$1" ]; then
+        ldst=$(wc -l "$2")
+        lsame=$(diff -w --new-line-format="" --unchanged-line-format="" \
+            <(sort -b "$1") <(sort -b "$2") | wc -l)
+        if (( ((lsame * 100 / ldst)) < 70 )); then
+            return 0
+        else
+            return 1
+        fi
+    fi
+
+    echo "Error, $1 or $2 not regular file" >&2
+    return 1;
+}
+
+
 bash_setup() {
-    test -f $HOME/.bashrc && \
-        cat $HOME/.bashrc .bashrc > $HOME/.bashrc || \
-        echo "$HOME/.bashrc not find, exit!" >&2; exit 1
+    if [ -f $HOME/.bashrc ]; then
+        echo "$HOME/.bashrc not exist, new created"
+        cat /etc/skel/.bashrc .bashrc > "$HOME/.bashrc"
+    elif overlap_check ".bashrc" "$HOME/.bahrc"; then
+        cat $HOME/.bashrc .bashrc > "$HOME/.bashrc"
+    else
+        echo "$HOME/.bashrc seems have merged the content of .bashrc, skip."
+        return 0
+    fi
     for bash_file in .inputrc .bash_*; do
-       test -f "$HOME/$bash_file" && \
-           printf "bash_file: %s exist\n" "$bash_file" || \
-           ln -srL "$bash_file" "$HOME/"
+        if [ -f "$HOME/$bash_file" ]; then
+            printf "bash_file: %s exist\n" "$bash_file"
+            exit 1
+        else
+            ln -srL "$bash_file" "$HOME/"
+        fi
     done
     . ~/.bashrc
 }
@@ -80,68 +117,17 @@ tmux_setup() {
 command_install() {
     local distro
     local machtype
-    declare -a mirror_url
-    declare -a ip_info
+    distro=$(sed -n 's/^ID=\([a-z]\+\)/\1/p' /etc/os-release)
 
-    if [ $(whoami) != root ];then
-        echo "${FUNCNAME[0]} need root privilege" >&2
-        return 1;
-    fi
-    distro=$(cat /etc/issue | cut -f 2 | xargs)
-    machtype=$(uname -m)
-    # TODO: support any machine
-    if [ $machtype = x86_64 ]; then
-        echo "${FUNCNAME[0]} only support x86_64 machine" >&2
-        return 1
-    fi
-    # ip info format
-    # ip    cn_code country province    city    latitude    longtigude
-    # TODO: alternative json parse
-    read -r -a ip_info <<< "$(curl -s -m2 https://api.myip.la/en?toml)"
-    if (( ${#ip_info[@]} < 6 )); then
-        echo "${FUNCNAME[0]} get ip info fail" >&2
-        return 1
-    fi
-
-    # TODO: nearby mirrors selection
-    if [ ${ip_info[2]} = "CN" ]; then
-        case $distro in
-            Debian)
-                mv /etc/apt/source.list /etc/apt/source.list.bak
-                cp etc/apt/tencent.debian.list /etc/apt/source.list
-                ;;
-            Ubuntu)
-                mv /etc/apt/source.list /etc/apt/source.list.bak
-                cp etc/apt/tencent.ubuntu.list /etc/apt/source.list
-                ;;
-            Arch)
-                sed -i '7 i Server = https://mirrors.cloud.tencent.com/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
-                ;;
-            *)
-                echo "unsupport distro, please change package source manually" >&2
-                ;;
-        esac
-    fi
-
-    # ubuntu borrow package from debian unstable
-    if [ $distro -e Ubuntu ];then
-        apt install add-apt-key
-        cat <<- _EOF_ >>/etc/apt/source.list
-		deb https://mirrors.cloud.tencent.com/debian/ unstable main contrib non-free
-		deb-src https://mirrors.cloud.tencent.com/debian/ unstable main contrib non-free
-		_EOF_
-		# refer to: https://wiki.debian.org/SecureApt
-        wget -O - https://ftp-master.debian.org/keys/archive-key-10.asc | sudo apt-key add -
-    fi
 
     case $distro in
-        Debian|Ubuntu)
+        debian|ubuntu)
             apt-get update
             while read pkg; do
                 apt install -y $pkg
             done < apt.pkglist
             ;;
-        Arch)
+        arch)
             # FIXME: pacman use different pkg name
             pacman -Syu
             while read pkg; do
@@ -152,27 +138,26 @@ command_install() {
 }
 
 tldr_setup() {
-	if [ -f ~/.tldrrc ]; then
-		echo "tldr config file exit, return"
-		return 0
-	fi
-	if ! type -P tldr >/dev/null; then
-		echo "tldr cmd not find, return"
-		return 1
-	fi
-	repo="$(readlink -f source/tldr)"
-	cp .tldrrc $HOME/
-	sed -i "s|\(repo_directory:\).*|\1 $repo|g" $HOME/.tldrrc
-	tldr reindex
-	tldr update
+    if [ -f ~/.tldrrc ]; then
+        echo "tldr config file exit, return"
+        return 0
+    fi
+    if ! type -P tldr >/dev/null; then
+        echo "tldr cmd not find, return"
+        return 1
+    fi
+    repo="$(readlink -f source/tldr)"
+    cp .tldrrc $HOME/
+    sed -i "s|\(repo_directory:\).*|\1 $repo|g" $HOME/.tldrrc
+    tldr reindex
+    tldr update
 }
-
 
 infect() {
     pushd $(git rev-parse --show-toplevel)
-    git submodule init
-    git submodule update
-    pushd $(dirname "${BASH_SOURCE[0]}")
+    git submodule update --init
+    echo $(dirname "${BASH_SOURCE[0]}")
+    pushd $(readlink -f "$SOURCE")
     command_install
     bash_setup
     tmux_setup
