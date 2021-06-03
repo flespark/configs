@@ -36,8 +36,8 @@ scoop install \
 	qv2ray \
     aria2 \
     sudo \
-    vim \
     busybox \
+    vim \
     windows-terminal \
     sumatrapdf \
     everything \
@@ -50,12 +50,14 @@ scoop install \
 	notepad3 \
 	googlechrome-bata \
 	telegram \
+    cmake \
     anki@2.1.15 \
     picgo \
     nodejs \
     yarn \
     vlc \
-    rufus
+    rufus \
+    hugo
 scoop install --global \
     firacode \
     JetBrains-Mono \
