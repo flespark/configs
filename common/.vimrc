@@ -56,6 +56,10 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 4/3)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 3/4)<CR>
+" Hex read
+nmap <Leader>hr :%!xxd<CR> :set filetype=xxd<CR>
+" Hex write
+nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 nnoremap <silent> <leader>p :set paste!<cr>
 nnoremap <esc><esc> :nohlsearch<return><esc>
 nnoremap <silent> <leader>l <esc>:set norelativenumber! nonumber!<cr>
