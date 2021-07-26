@@ -1,5 +1,4 @@
 " ban backspace for a better command edit habit
-set backspace=
 set nocompatible
 set autoindent
 set relativenumber number
@@ -84,7 +83,7 @@ let g:airline_theme = 'jellybeans'
 
 " ale
 let g:ale_linters = {
-\       'c': ['clangd'],
+\       'c': ['ccls'],
 \       'sh': ['shellcheck'],
 \       'python': ['pylint'],
 \}
@@ -94,6 +93,8 @@ let g:ale_completion_delay = 300
 let g:ale_lint_delay = 500
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_lint_on_insert_leave = 1
+let g:ale_c_clangd_options = '--clang-tidy --completion-style=bundled --suggest-missing-includes'
+let g:ale_c_parse_makefile = 1
 let g:airline#extensions#ale#enabled = 1
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
