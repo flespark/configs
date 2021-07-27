@@ -38,7 +38,7 @@
 	ft = fetch
 	gp = log --graph --date=short --format=\"%C(yellow)%h%C(reset) %C(magenta)%cd %C(auto)%d%C(reset) %s  %C(cyan)@%an%C(reset)\"
 	gr = log --decorate --graph --oneline --all
-	lg = git log --graph --oneline --decorate --all
+	lg = log --graph --oneline --decorate --all
 	ls = log --decorate --name-status
 	mg = merge
 	mt = mergetool
