@@ -1,9 +1,8 @@
 #!/bin/bash                                                                                                                                                                                                                                
 
 cwd="$(dirname "${BASH_SOURCE[0]}")"
-# shellcheck source=.bash_completion
-source "${cwd}"/.bash_completion                                                               
 
+# bash autocompletion script example
 dc(){
         local param last_path path="$PWD"
         if [[ ($# != 1) || ("$1" =~ ^((-h)|(--help))$) ]]; then
@@ -28,4 +27,32 @@ dc(){
         fi
         return
 }
+
+_dc(){
+	local opts
+	if (( ${#COMP_WORDS[@]} > 2 )); then
+		return
+	fi
+	local IFS=$'\n'
+	opts="$( tr '/' '\n' <<<"$PWD" | tac )"
+	# shellcheck disable=2207
+	COMPREPLY=($(compgen -W "${opts}" -- "${COMP_WORDS[1]}"))
+}
+
 complete -F _dc dc
+
+if type -P fzf >/dev/null; then
+	. ${cwd}/fzf.sh
+fi
+
+if type -P rg >/dev/null; then
+	. ${cwd}/rg.sh
+fi
+
+if type -P fd >/dev/null; then
+	. ${cwd}/fd.sh
+fi
+
+if type -P hugo >/dev/null; then
+	. ${cwd}/hugo.sh
+fi
