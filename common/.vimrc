@@ -75,6 +75,14 @@ nnoremap <silent> <C-f> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>
 
+" NERDTree shortkey
+nnoremap <C-e> :NERDTreeToggle<CR>
+nnoremap <M-h> :tabn<CR>
+nnoremap <M-h> :tabp<CR>
+nnoremap <M-j> :tablast<CR>
+nnoremap <M-k> :tabfirst<CR>
+nnoremap <M-x> :tabclose<CR>
+
 " air-line
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -83,17 +91,18 @@ let g:airline_theme = 'jellybeans'
 
 " ale
 let g:ale_linters = {
-\       'c': ['ccls'],
+\       'c': ['clangd'],
 \       'sh': ['shellcheck'],
 \       'python': ['pylint'],
 \}
 let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
-let g:ale_completion_delay = 300
+let g:ale_completion_delay = 200
 let g:ale_lint_delay = 500
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_set_highlights = 0
 let g:ale_lint_on_insert_leave = 1
-let g:ale_c_clangd_options = '--clang-tidy --completion-style=bundled --suggest-missing-includes'
+let g:ale_c_clangd_options = '--query-driver=/usr/bin/*gcc --clang-tidy --completion-style=bundled --suggest-missing-includes'
 let g:ale_c_parse_makefile = 1
 let g:airline#extensions#ale#enabled = 1
 
@@ -104,8 +113,10 @@ nn <silent> <M-r> :ALEFindReferences<cr>
 nn <silent> <M-a> :ALESymbolSearch<cr>
 "nn <silent> <M-h> :ALEHover<cr>
 
+let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
+
 " autopair
-" let g:AutoPairsFlyMode = 1
+" let g:AutoPairsFlyMode = 0
 packadd! auto-pairs
 
 " easymotion
