@@ -106,12 +106,12 @@ let g:ale_c_clangd_options = '--query-driver=/usr/bin/*gcc --clang-tidy --comple
 let g:ale_c_parse_makefile = 1
 let g:airline#extensions#ale#enabled = 1
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nn <silent> <M-d> :ALEGoToDefinition<cr>
-nn <silent> <M-r> :ALEFindReferences<cr>
-nn <silent> <M-a> :ALESymbolSearch<cr>
-"nn <silent> <M-h> :ALEHover<cr>
+nmap <Leader>p <Plug>(ale_previous_wrap)
+nmap <Leader>n <Plug>(ale_next_wrap)
+nn <Leader>d :ALEGoToDefinition<cr>
+nn <Leader>r :ALEFindReferences<cr>
+nn <Leader>s :ALESymbolSearch<cr>
+nn <Leader><Leader> :ALEHover<cr>
 
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 
@@ -121,4 +121,4 @@ packadd! auto-pairs
 
 " easymotion
 packadd! vim-easymotion
-map <Leader><Leader> <Plug>(easymotion-prefix)
+nmap <C-j> <Plug>(easymotion-prefix)
