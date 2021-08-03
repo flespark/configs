@@ -16,8 +16,8 @@ if [ -f ~/.bash_command ]; then
 	. ~/.bash_command
 fi
 
-if [ -f ~/.bash_completion/main.sh ]; then
-	. ~/.bash_completion/main.sh
+if [ -f ~/.bash_comp/main.sh ]; then
+	. ~/.bash_comp/main.sh
 fi
 
 if type -P fzf &>/dev/null;then

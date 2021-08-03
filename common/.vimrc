@@ -95,8 +95,14 @@ let g:ale_linters = {
 \       'sh': ['shellcheck'],
 \       'python': ['pylint'],
 \}
+let g:ale_fixers = {
+\   '*': ['trim_whitespace'],
+\	'c': ['clangd'],
+\}
+
 let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
 let g:ale_completion_delay = 200
 let g:ale_lint_delay = 500
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
@@ -105,15 +111,13 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_c_clangd_options = '--query-driver=/usr/bin/*gcc --clang-tidy --completion-style=bundled --suggest-missing-includes'
 let g:ale_c_parse_makefile = 1
 let g:airline#extensions#ale#enabled = 1
-
-nmap <Leader>p <Plug>(ale_previous_wrap)
-nmap <Leader>n <Plug>(ale_next_wrap)
-nn <Leader>d :ALEGoToDefinition<cr>
-nn <Leader>r :ALEFindReferences<cr>
-nn <Leader>s :ALESymbolSearch<cr>
-nn <Leader><Leader> :ALEHover<cr>
-
-let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
+" navigate between errors quickly
+nnoremap <Leader>j <Plug>(ale_previous_wrap)
+nnoremap <Leader>k <Plug>(ale_next_wrap)
+nnoremap <Leader>d :ALEGoToDefinition<cr>
+nnoremap <Leader>r :ALEFindReferences<cr>
+nnoremap <Leader>s :ALESymbolSearch<space>
+nnoremap <Leader><Leader> :ALEHover<cr>
 
 " autopair
 " let g:AutoPairsFlyMode = 0
@@ -122,3 +126,10 @@ packadd! auto-pairs
 " easymotion
 packadd! vim-easymotion
 nmap <C-j> <Plug>(easymotion-prefix)
+
+" Put these lines at the very end of your vimrc file.
+"
+" packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
