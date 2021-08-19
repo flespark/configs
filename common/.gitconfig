@@ -24,6 +24,7 @@
 	af = am --reject --whitespace=fix
 	br = branch
 	bv = branch -vv
+    c = clone
 	cl = config -l
 	cm = commit
 	cma = commit --amend
@@ -61,6 +62,7 @@
 	defaultBranch = main
 	templatedir = ~/.git-templates
 [core]
+    quotePath = false
 	editor = vim
 # convert line ending in windows but not linux
 	autocrlf = false

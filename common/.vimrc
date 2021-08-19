@@ -47,12 +47,18 @@ noremap <up> <nop>
 noremap <down> <nop>
 noremap <right> <nop>
 noremap <left> <nop>
+
+set ttimeout
+set ttimeoutlen=300
+nnoremap D "_d
+inoremap jk <Esc>
+inoremap kj <Esc>
 " ban useless key prone to hit
-noremap <U> <nop>
-noremap <K> <nop>
+noremap U <nop>
+noremap K <nop>
 " set undo breakpoint for unintentional C-w & C-u
-inoremap <c-u> <c-g>u<c-u>
-inoremap <c-w> <c-g>u<c-w>
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 4/3)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 3/4)<CR>
 " Hex read
@@ -91,9 +97,11 @@ let g:airline_theme = 'jellybeans'
 
 " ale
 let g:ale_linters = {
-\       'c': ['clangd'],
-\       'sh': ['shellcheck'],
-\       'python': ['pylint'],
+\   'c': ['clangd'],
+\   'cpp': ['clangd'],
+\   'sh': ['shellcheck'],
+\   'python': ['pylint'],
+\   'lua': ['luac'],
 \}
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
