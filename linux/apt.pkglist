@@ -8,3 +8,4 @@ ripgrep
 clangd
 shellcheck
 tldr-py
+cppman

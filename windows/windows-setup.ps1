@@ -37,6 +37,8 @@ scoop install \
     aria2 \
     sudo \
     busybox \
+    deskpins \
+    ditto \
     vim \
     windows-terminal \
     sumatrapdf \
@@ -57,7 +59,9 @@ scoop install \
     yarn \
     vlc \
     rufus \
-    hugo
+    hugo \
+    vcredist2015 \
+    zeal
 scoop install --global \
     firacode \
     JetBrains-Mono \

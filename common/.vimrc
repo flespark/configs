@@ -28,7 +28,8 @@ set tags=./.tags;,.tags
 let mapleader = "\<space>"
 
 set foldenable
-set foldmethod=indent
+set foldmethod=syntax
+set foldcolumn=0
 set foldlevel=99
 
 set undofile
@@ -68,6 +69,14 @@ nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 nnoremap <silent> <leader>p :set paste!<cr>
 nnoremap <esc><esc> :nohlsearch<return><esc>
 nnoremap <silent> <leader>l <esc>:set norelativenumber! nonumber!<cr>
+function! Tscl()
+    if &signcolumn == "auto" || &signcolumn == "yes"
+        set signcolumn=no
+    else
+        set signcolumn=auto
+    endif
+endfunction
+nnoremap <leader>c :call Tscl()<cr>
 " clean trailing whitspace
 nnoremap <silent> <F12> :let _s=@/ <bar> :%s/\s\+$//e <bar> :let @/=_s <bar> :nohl <bar> :unlet _s <cr>
 inoremap jj <esc>
@@ -111,6 +120,8 @@ let g:ale_fixers = {
 let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
 let g:ale_completion_delay = 200
 let g:ale_lint_delay = 500
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
