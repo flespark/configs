@@ -1,6 +1,8 @@
 
 # correct the spell error in cd command
 shopt -s cdspell
+set -o ignoreeof
+export IGNOREEOF=3
 
 PS1='\[\033[0;31m\]\A \[\033[32m\]\W \[\033[36m\]>\[\033[00m\]'
 

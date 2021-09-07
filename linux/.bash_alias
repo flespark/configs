@@ -62,6 +62,7 @@ fi
 
 
 # dbg tools
+egdb() { emacs --eval "(gdb \"gdb --annotate=3 -i=mi $*\")"; }
 if type -P valgrid; then
 	alias vg='valgrind --leak-check=full --show-lead-kinds=all --track-origins=yes --verbose --log-file=valgrid-out.txt'
 fi

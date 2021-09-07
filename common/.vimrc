@@ -11,6 +11,9 @@ hi normal guibg=NONE ctermbg=NONE
 hi endofbuffer guibg=NONE ctermbg=NONE
 filetype plugin indent on
 set cursorline
+" show status line
+set laststatus=2
+set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ Ln\ %l,\ Col\ %c/%L%)
 " disable auto line feed
 set nowrap
 set hlsearch
@@ -102,7 +105,6 @@ nnoremap <M-x> :tabclose<CR>
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'jellybeans'
 
 " ale
 let g:ale_linters = {

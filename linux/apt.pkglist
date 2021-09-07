@@ -1,6 +1,7 @@
 build-essential
 python3
 vim
+emacs
 fzf
 fd-find
 xclip
