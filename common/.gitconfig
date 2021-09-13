@@ -14,6 +14,10 @@
 	defaultToUpstream = true
 [mergetool]
 	prompt = false
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
 [push]
 	default = simple
 [alias]
@@ -33,7 +37,8 @@
 	ch = checkout --
 	cp = cherry-pick
 	dc = diff --cached
-	dcn = diff --name-status --cached
+    dcn = diff --name-status --cached
+    d = difftool
 	df = diff
 	fp = format-patch
 	ft = fetch

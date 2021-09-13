@@ -21,7 +21,7 @@ alias rcp='rsync -avuz'
 # other tools
 alias vi='vim'
 alias mk='make'
-alias ta='tmux attach 2>/dev/null || tmux'
+alias ta='tmux attach -t default || tmux new -s default'
 alias vd='vimdiff'
 alias lr='less -r'
 alias gd='git diff --no-index'
