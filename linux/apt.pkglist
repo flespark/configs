@@ -10,3 +10,4 @@ clangd
 shellcheck
 tldr-py
 cppman
+git-delta

@@ -7,6 +7,17 @@
 	ui = auto
 [log]
 	decorate = auto
+#[pager]
+#    diff = delta
+#    log = delta
+#    reflog = delta
+#    show = delta
+#[interactive]
+#    diffFilter = delta --color-only --features=interactive
+#[delta]
+#    features = Github
+#    light = true
+#    side-by-side = true
 [merge]
 	ff = only
 	tool = vimdiff
