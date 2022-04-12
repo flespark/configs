@@ -1,5 +1,6 @@
 build-essential
 python3
+python3-pip
 vim
 emacs
 fzf
@@ -10,4 +11,6 @@ clangd
 shellcheck
 tldr-py
 cppman
-git-delta
+smartmontools
+lvm2
+jq

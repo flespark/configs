@@ -26,7 +26,7 @@ set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
-set tags=./.tags;,.tags
+set tags=./.tags,.tags
 " a faciler leader key
 let mapleader = "\<space>"
 

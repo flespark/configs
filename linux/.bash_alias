@@ -10,6 +10,7 @@ alias df='df -h'
 alias rf='readlink -f'
 # kill all mosh server except last one
 alias kms='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
+alias odd='od -A x -t xz -N 256 -v'
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -20,6 +21,7 @@ alias rcp='rsync -avuz'
 
 # other tools
 alias vi='vim'
+alias v='vim'
 alias mk='make'
 alias ta='tmux attach -t default || tmux new -s default'
 alias vd='vimdiff'

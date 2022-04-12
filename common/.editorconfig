@@ -3,7 +3,7 @@ root = true
 
 [*]
 charset = utf-8
-indent_style = space
+indent_style = table
 indent_size = 4
 trim_trailing_whitespace = true
 [*.[ch]]
