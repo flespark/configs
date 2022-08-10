@@ -1,29 +1,27 @@
 # enable pwshell run not signed script
 Set-ExecutionPolicy Unrestricted
-# config pwshell profile
-if (!(Test-Path -Path $PROFILE.CurrentUserAllHosts)) {
-  Copy-Item profile.ps1 $PROFILE.CurrentUserAllHosts -Force
-}
 
 # Install scoop
 # When scoop already installed, run 'D:\Software\Scoop\apps\scoop\current\bin\refresh.ps1' to enable scoop agian
 # You may also add %SCOOP%\shims to PATH
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 $env:SCOOP='D:\Software\Scoop'
 [Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
 $env:SCOOP_GLOBAL='D:\Software\Scoop'
 [Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', $env:SCOOP_GLOBAL, 'Machine')
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-
+# Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+irm https://raw.fastgit.org/scoopinstaller/install/master/install.ps1 -o scoop-install.ps1
 # If want to work under proxy, scoop also obey to general proxy environment variables.
 # all install command will bypass proxy, eg.:
 # [Environment]::SetEnvironmentVariable('http_proxy','localhost:8889', 'Machine')
 # [Environment]::SetEnvironmentVariable('https_proxy','localhost:8889', 'Machine')
 # or by internal config: scoop config proxy localhost:8889
+(Get-Content scoop_install.ps1).replace('https://github.com/ScoopInstaller/', 'https://hub.fastgit.xyz/ScoopInstaller/') | Set-Content scoop_install.ps1
+.\scoop_install.ps1
 
 scoop install sudo
 # TODO: install git-windows.exe from inland mirror site
-sudo scoop install git -g
 sudo Copy-Item .gitconfig ~ -Force
 
 scoop bucket add \
@@ -35,6 +33,7 @@ scoop install \
 	v2ray \
 	qv2ray \
     aria2 \
+    typora \
     sudo \
     busybox \
     deskpins \
@@ -61,7 +60,10 @@ scoop install \
     rufus \
     hugo \
     vcredist2015 \
-    zeal
+    zeal \
+    logseq \
+    powertoys
+
 scoop install --global \
     firacode \
     JetBrains-Mono \
