@@ -49,9 +49,11 @@ scoop install \
     alacritty \
     etcher \
 	notepad3 \
-	googlechrome-bata \
+	googlechrome \
+	listary1desktop \
 	telegram \
     cmake \
+	winscp \
     anki@2.1.15 \
     picgo \
     nodejs \
@@ -59,10 +61,13 @@ scoop install \
     vlc \
     rufus \
     hugo \
-    vcredist2015 \
+    vcredist2022 \
     zeal \
     logseq \
-    powertoys
+	mosh-client \
+    powertoys \
+	vncviewer \
+	snipaste
 
 scoop install --global \
     firacode \
