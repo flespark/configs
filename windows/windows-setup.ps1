@@ -67,7 +67,9 @@ scoop install \
 	mosh-client \
     powertoys \
 	vncviewer \
-	snipaste
+	snipaste \
+	trafficmonitor
+
 
 scoop install --global \
     firacode \
