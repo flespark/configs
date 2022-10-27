@@ -70,5 +70,5 @@ if type -P valgrid; then
 fi
 
 if type -P tldr >/dev/null; then
-	alias tf='fldr find'
+	alias tf='tldr find'
 fi
