@@ -93,13 +93,13 @@ scoop install lxrunoffline
 if (!(Test-Path -Path 'D:\Download')) {
       mkdir 'D:\Download'
 }
-curl -LO https://mirrors.cloud.tencent.com/archlinux/iso/2021.04.01/archlinux-bootstrap-2021.04.01-x86_64.tar.gz
+Invoke-WebRequest -Uri https://mirrors.edge.kernel.org/archlinux/iso/2022.10.01/archlinux-bootstrap-2022.10.01-x86_64.tar.gz -Out D:\Download\archlinux-bootstrap.tar.gz
 
 if (!(Test-Path -Path 'D:\WSL\arch')) {
       mkdir 'D:\WSL\arch'
 }
 
-lxrunoffline.exe i -n Arch -d D:\WSL\arch\ -f D:\Download\archlinux-bootstrap-2021.04.01-x86_64.tar.gz -r root.x86_64
+lxrunoffline.exe i -n Arch -d D:\WSL\arch\ -f D:\Download\archlinux-bootstrap.tar.gz -r root.x86_64
 
 # check whether install on wsl2
 # wsl -l -v
@@ -110,7 +110,7 @@ lxrunoffline.exe i -n Arch -d D:\WSL\arch\ -f D:\Download\archlinux-bootstrap-20
 wsl ~ -d Arch
 # config use tencent source mirror:
 # Server = https://mirrors.cloud.tencent.com/archlinux/$repo/os/$arch
-notepad3.exe /etc/pacman.d/mirrorlist
+notepad.exe /etc/pacman.d/mirrorlist
 # install basic devel tools
 pacman-key --init
 pacman-key --populate archlinux
