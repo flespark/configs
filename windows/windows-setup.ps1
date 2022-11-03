@@ -30,6 +30,9 @@ scoop bucket add \
 	nerd-fonts \
     java
 scoop install \
+	arduino \
+	wireshark \
+	kicad \
 	v2ray \
 	qv2ray \
     aria2 \
