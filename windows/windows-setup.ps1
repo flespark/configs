@@ -31,6 +31,8 @@ scoop bucket add \
     java
 scoop install \
 	arduino \
+	clion \
+	pulseview \
 	wireshark \
 	kicad \
 	v2ray \
