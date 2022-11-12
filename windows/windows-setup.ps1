@@ -35,6 +35,7 @@ scoop install \
 	pulseview \
 	wireshark \
 	kicad \
+	portable-virtualbox \
 	v2ray \
 	qv2ray \
     aria2 \
