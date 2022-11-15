@@ -33,6 +33,9 @@ scoop install \
 	arduino \
 	clion \
 	pulseview \
+	openocd \
+	gcc-arm-none-eabi \
+	ninja \
 	wireshark \
 	kicad \
 	portable-virtualbox \
