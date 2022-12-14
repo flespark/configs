@@ -1,3 +1,4 @@
 # configs
-a set of facile configs boost linux sdk development
+
+a set of initialization configs for coding
 
