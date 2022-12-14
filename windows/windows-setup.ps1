@@ -37,7 +37,9 @@ scoop install \
 	gcc-arm-none-eabi \
 	ninja \
 	wireshark \
+	kdiff3 \
 	kicad \
+	mingw \
 	portable-virtualbox \
 	v2ray \
 	qv2ray \
