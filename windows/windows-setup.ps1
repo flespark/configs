@@ -27,10 +27,12 @@ sudo Copy-Item .gitconfig ~ -Force
 scoop bucket add \
 	extras \
 	mochi \
+	nonportable \
 	nerd-fonts \
     java
 scoop install \
 	arduino \
+	irfanview \
 	clion \
 	pulseview \
 	openocd \
@@ -79,8 +81,8 @@ scoop install \
     powertoys \
 	vncviewer \
 	snipaste \
-	trafficmonitor
-
+	trafficmonitor \
+	zadig-np
 
 scoop install --global \
     firacode \
