@@ -32,6 +32,8 @@ scoop bucket add \
     java
 scoop install \
 	arduino \
+	obs-studio \
+	goldendict \
 	irfanview \
 	clion \
 	pulseview \
