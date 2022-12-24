@@ -49,6 +49,7 @@ scoop install \
 	qv2ray \
     aria2 \
     typora \
+    putty \
     sudo \
     busybox \
     deskpins \
