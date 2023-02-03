@@ -32,7 +32,10 @@ scoop bucket add \
     java
 scoop install \
 	arduino \
+	autohotkey \
+	paint.net \
 	obs-studio \
+	freecad \
 	goldendict \
 	irfanview \
 	clion \
@@ -54,6 +57,7 @@ scoop install \
     busybox \
     deskpins \
     ditto \
+    sourcetrail \
     vim \
     windows-terminal \
     sumatrapdf \
@@ -85,6 +89,8 @@ scoop install \
 	vncviewer \
 	snipaste \
 	trafficmonitor \
+	winsw \
+	frp \
 	zadig-np
 
 scoop install --global \
