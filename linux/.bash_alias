@@ -72,3 +72,4 @@ fi
 if type -P tldr >/dev/null; then
 	alias tf='tldr find'
 fi
+

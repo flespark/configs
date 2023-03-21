@@ -60,9 +60,6 @@ inoremap kj <Esc>
 " ban useless key prone to hit
 noremap U <nop>
 noremap K <nop>
-" set undo breakpoint for unintentional C-w & C-u
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 4/3)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 3/4)<CR>
 " Hex read
@@ -139,14 +136,6 @@ nnoremap <Leader>d :ALEGoToDefinition<cr>
 nnoremap <Leader>r :ALEFindReferences<cr>
 nnoremap <Leader>s :ALESymbolSearch<space>
 nnoremap <Leader><Leader> :ALEHover<cr>
-
-" autopair
-" let g:AutoPairsFlyMode = 0
-packadd! auto-pairs
-
-" easymotion
-packadd! vim-easymotion
-nmap <C-j> <Plug>(easymotion-prefix)
 
 " Put these lines at the very end of your vimrc file.
 "

@@ -32,13 +32,17 @@ scoop bucket add \
     java
 scoop install \
 	arduino \
+    astyle \
 	autohotkey \
 	paint.net \
 	obs-studio \
 	freecad \
 	goldendict \
+    blender \
 	irfanview \
+	ngspice \
 	clion \
+    stlink \
 	pulseview \
 	openocd \
 	gcc-arm-none-eabi \
@@ -63,7 +67,8 @@ scoop install \
     sumatrapdf \
     everything \
     winpython \
-    adoptopenjdk-lts-hotspot \
+    openjdk \
+    eclipse-cpp \
 	vscode \
     windows-terminal \
     alacritty \
@@ -78,6 +83,7 @@ scoop install \
     picgo \
     nodejs \
     yarn \
+    docker \
     vlc \
     rufus \
     hugo \
@@ -91,7 +97,8 @@ scoop install \
 	trafficmonitor \
 	winsw \
 	frp \
-	zadig-np
+	zadig-np \
+    dismplusplus
 
 scoop install --global \
     firacode \
