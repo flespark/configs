@@ -1,6 +1,6 @@
 [submodule "linux/.tmux/plugins/tpm"]
 	path = linux/.tmux/plugins/tpm
-	url = https://hub.fastgit.org/tmux-plugins/tpm.git
+	url = https://github.com/tmux-plugins/tpm.git
 #[submodule "linux/.tmux/plugins/tmux-colors-solarized"]
 #	path = linux/.tmux/plugins/tmux-colors-solarized
 #	url = https://hub.fastgit.com/seebi/tmux-colors-solarized.git
@@ -15,52 +15,52 @@
 #	url = https://hub.fastgit.com/laktak/extrakto.git
 [submodule "common/.vim/pack/combine/start/vim-fugitive"]
 	path = common/.vim/pack/combine/start/vim-fugitive
-	url = https://hub.fastgit.org/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "common/.vim/pack/combine/start/asyncrun.vim"]
 	path = common/.vim/pack/combine/start/asyncrun.vim
-	url = https://hub.fastgit.org/skywind3000/asyncrun.vim.git
+	url = https://github.com/skywind3000/asyncrun.vim.git
 [submodule "common/.vim/pack/extension/start/ale"]
 	path = common/.vim/pack/extension/start/ale
-	url = https://hub.fastgit.org/dense-analysis/ale.git
+	url = https://github.com/dense-analysis/ale.git
 [submodule "common/.vim/pack/profile/start/vim-airline"]
 	path = common/.vim/pack/profile/start/vim-airline
-	url = https://hub.fastgit.org/vim-airline/vim-airline.git
+	url = https://github.com/vim-airline/vim-airline.git
 [submodule "common/.vim/pack/profile/opt/dracula-theme"]
 	path = common/.vim/pack/profile/opt/dracula-theme
-	url = https://hub.fastgit.org/dracula/dracula-theme.git
+	url = https://github.com/dracula/dracula-theme.git
 [submodule "common/.vim/pack/profile/opt/vim-airline-themes"]
 	path = common/.vim/pack/profile/start/vim-airline-themes
-	url = https://hub.fastgit.org/vim-airline/vim-airline-themes.git
+	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "common/.vim/pack/extension/start/editorconfig-vim"]
 	path = common/.vim/pack/extension/start/editorconfig-vim
-	url = https://hub.fastgit.org/editorconfig/editorconfig-vim.git
+	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "common/.vim/pack/extension/start/vim-surround"]
 	path = common/.vim/pack/extension/start/vim-surround
-	url = https://hub.fastgit.org/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "common/.vim/pack/extension/start/nerdtree"]
 	path = common/.vim/pack/extension/start/nerdtree
-	url = https://hub.fastgit.org/preservim/nerdtree.git
+	url = https://github.com/preservim/nerdtree.git
 [submodule "common/.vim/pack/game/opt/killersheep"]
 	path = common/.vim/pack/game/opt/killersheep
-	url = https://hub.fastgit.org/vim/killersheep.git
+	url = https://github.com/vim/killersheep.git
 [submodule "common/.vim/pack/combine/start/fzf.vim"]
 	path = common/.vim/pack/combine/start/fzf.vim
-	url = https://hub.fastgit.org/junegunn/fzf.vim.git
+	url = https://github.com/junegunn/fzf.vim.git
 [submodule "common/.vim/pack/syntax/start/vim-polyglot"]
 	path = common/.vim/pack/syntax/start/vim-polyglot
-	url = https://hub.fastgit.org/sheerun/vim-polyglot.git
+	url = https://github.com/sheerun/vim-polyglot.git
 [submodule "common/.vim/pack/extension/opt/auto-pairs"]
 	path = common/.vim/pack/extension/opt/auto-pairs
-	url = https://hub.fastgit.org/jiangmiao/auto-pairs.git
+	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "common/.vim/pack/extension/opt/vim-easymotion"]
 	path = common/.vim/pack/extension/opt/vim-easymotion
-	url = https://hub.fastgit.org/easymotion/vim-easymotion.git
+	url = https://github.com/easymotion/vim-easymotion.git
 [submodule "common/.vim/pack/extension/start/vim-commentary"]
 	path = common/.vim/pack/extension/start/vim-commentary
-	url = https://hub.fastgit.org/tpope/vim-commentary.git
+	url = https://github.com/tpope/vim-commentary.git
 [submodule "linux/source/tldr-pages"]
 	path = linux/source/tldr-pages
-	url = https://hub.fastgit.org/tldr-pages/tldr.git
+	url = https://github.com/tldr-pages/tldr.git
 [submodule "common/.vim/pack/combine/start/vim-tmux-navigator"]
 	path = common/.vim/pack/combine/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
