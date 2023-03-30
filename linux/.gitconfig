@@ -84,8 +84,9 @@
 	autocrlf = false
 	attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore
-# [url "https://hub.fastgit.org/"]
-[url "https://hub.fgit.ml/"]
+# [url "https://hub.fgit.ml/"]
+[url "https://hub.nuaa.cf/"]
+# [url "https://gitclone.com/"]
 	insteadOf = https://github.com/
 # [http]
 # 	proxy = http://127.0.0.1:8889
