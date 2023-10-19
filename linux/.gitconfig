@@ -16,7 +16,7 @@
 #    diffFilter = delta --color-only --features=interactive
 #[delta]
 #    features = Github
-#    light = true
+#    light = true	# is light color background
 #    side-by-side = true
 [merge]
 	ff = only
@@ -85,9 +85,9 @@
 	attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore
 # [url "https://hub.fgit.ml/"]
-[url "https://hub.nuaa.cf/"]
+#[url "https://hub.nuaa.cf/"]
 # [url "https://gitclone.com/"]
-	insteadOf = https://github.com/
+	#insteadOf = https://github.com/
 # [http]
 # 	proxy = http://127.0.0.1:8889
 # [https]

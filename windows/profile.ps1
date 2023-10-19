@@ -1,4 +1,5 @@
 # set emacs mode command line hotkey
+# install psreadline first by "Install-Module -Name PSReadLine -AllowClobber -Force"
 Set-PSReadLineOption -EditMode Emacs
 
 # enable oh-my-posh (powerline prompt)

@@ -24,29 +24,35 @@ scoop install sudo
 # TODO: install git-windows.exe from inland mirror site
 sudo Copy-Item .gitconfig ~ -Force
 
-scoop bucket add \
-	extras \
-	mochi \
-	nonportable \
-	nerd-fonts \
-    java
+scoop bucket add extras
+scoop bucket add nonportable
+scoop bucket add nerd-fonts
+scoop bucket addd java
+
 scoop install \
+	anaconda3 \
 	arduino \
-    astyle \
+	astyle \
 	autohotkey \
 	paint.net \
+	doxygen \
+	graphviz \
 	obs-studio \
+	localsend \
 	freecad \
 	goldendict \
-    blender \
+	blender \
 	irfanview \
+	imhex \
 	ngspice \
 	clion \
-    stlink \
+	stlink \
 	pulseview \
 	openocd \
 	gcc-arm-none-eabi \
+	xtensa-esp32-elf \
 	ninja \
+	tealdeer \
 	wireshark \
 	kdiff3 \
 	kicad \
@@ -54,51 +60,55 @@ scoop install \
 	portable-virtualbox \
 	v2ray \
 	qv2ray \
-    aria2 \
-    typora \
-    putty \
-    sudo \
-    busybox \
-    deskpins \
-    ditto \
-    sourcetrail \
-    vim \
-    windows-terminal \
-    sumatrapdf \
-    everything \
-    winpython \
-    openjdk \
-    eclipse-cpp \
+	neovim \
+	trzsz \
+	aria2 \
+	typora \
+	putty \
+	sudo \
+	busybox \
+	deskpins \
+	ditto \
+	sourcetrail \
+	vim \
+	windows-terminal \
+	sumatrapdf \
+	everything \
+	winpython \
+	openjdk \
+	eclipse-cpp \
 	vscode \
-    windows-terminal \
-    alacritty \
-    etcher \
+	windows-terminal \
+	alacritty \
+	etcher \
 	notepad3 \
 	googlechrome \
 	listary1desktop \
 	telegram \
-    cmake \
+	cmake \
 	winscp \
-    anki@2.1.15 \
-    picgo \
-    nodejs \
-    yarn \
-    docker \
-    vlc \
-    rufus \
-    hugo \
-    vcredist2022 \
-    zeal \
-    logseq \
+	anki@2.1.15 \
+	picgo \
+	nodejs \
+	yarn \
+	docker \
+	vlc \
+	rufus \
+	hugo \
+	vcredist2022 \
+	zeal \
+	logseq \
 	mosh-client \
-    powertoys \
+	powertoys \
 	vncviewer \
 	snipaste \
 	trafficmonitor \
 	winsw \
 	frp \
 	zadig-np \
-    dismplusplus
+	dismplusplus \
+	stlink \
+	meshroom
 
 scoop install --global \
     firacode \
