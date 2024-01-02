@@ -11,6 +11,3 @@ clangd
 shellcheck
 tldr-py
 cppman
-smartmontools
-lvm2
-jq

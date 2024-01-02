@@ -61,10 +61,14 @@ scoop install \
 	v2ray \
 	qv2ray \
 	neovim \
+	fd \
+	ripgrep \
+	sd \
 	trzsz \
 	aria2 \
 	typora \
 	putty \
+	srecord \
 	sudo \
 	busybox \
 	deskpins \

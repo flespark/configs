@@ -1,6 +1,10 @@
 " ban backspace for a better command edit habit
 set nocompatible
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
+set smartindent
 set relativenumber number
 syntax on
 set showmatch
@@ -37,7 +41,12 @@ set foldlevel=99
 
 set undofile
 set undodir=~/.vim/undo
-set viminfo=%,<100,'10,/50,:100,h,f0,n~/.vim/.viminfo
+set viminfo=%,<100,'10,/50,:100,h,f0,
+if !has('nvim')
+  set viminfo+=n~/.vim/viminfo
+else
+  set viminfo+=n~/.vim/.shada
+endif
 " manually save/load view
 " set viewoptions=folds,cursor,curdir
 " manually save/load session
