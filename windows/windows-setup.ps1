@@ -25,8 +25,9 @@ scoop install sudo
 sudo Copy-Item .gitconfig ~ -Force
 
 scoop bucket add extras
-scoop bucket add nonportable
+scoop bucket add nirsoft
 scoop bucket add nerd-fonts
+scoop bucket add nonportable
 scoop bucket addd java
 
 scoop install \
@@ -106,6 +107,7 @@ scoop install \
 	powertoys \
 	vncviewer \
 	snipaste \
+	sharex \
 	trafficmonitor \
 	winsw \
 	frp \
