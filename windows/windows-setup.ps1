@@ -47,6 +47,7 @@ scoop install \
 	imhex \
 	ngspice \
 	clion \
+	iconv \
 	stlink \
 	pulseview \
 	openocd \
@@ -67,6 +68,7 @@ scoop install \
 	sd \
 	trzsz \
 	aria2 \
+	motix \
 	typora \
 	putty \
 	srecord \
@@ -100,9 +102,11 @@ scoop install \
 	vlc \
 	rufus \
 	hugo \
+	gopeed \
 	vcredist2022 \
 	zeal \
 	logseq \
+	lux \ # CLI video downloader
 	mosh-client \
 	powertoys \
 	vncviewer \
