@@ -93,6 +93,17 @@ inoremap jj <esc>
 autocmd BufNewFile,BufReadPost * if &filetype == "python" | set indentkeys-=0# | endif
 autocmd BufNewFile,BufReadPost * if &filetype == "yaml" | set expandtab shiftwidth=2 indentkeys-=0# | endif
 
+" TODO: use vim-plug
+call plug#begin('~/.vim/plugged')
+" install plugin
+Plug 'junegunn/fzf', { 'dir': '~/fzf', 'do': './install --all' }
+Plug 'gpanders/editorconfig.nvim'
+Plug 'easymotion/vim-easymotion'
+Plug 'KabbAmine/zeavim.vim'
+Plug 'andymass/vim-matchup'
+" ...
+call plug#end()
+
 " fzf-vim shortkey
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <C-f> :Files<CR>

@@ -8,6 +8,7 @@ alias l='ll -h'
 alias md='mkdir -p'
 alias df='df -h'
 alias rf='readlink -f'
+alias rm='rm -i'
 # kill all mosh server except last one
 alias kms='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
 alias odd='od -A x -t xz -N 256 -v'

@@ -30,6 +30,9 @@ scoop bucket add nerd-fonts
 scoop bucket add nonportable
 scoop bucket addd java
 
+<##
+ # namp: for wireshark and ncat
+##>
 scoop install \
 	anaconda3 \
 	arduino \
@@ -59,6 +62,7 @@ scoop install \
 	kdiff3 \
 	kicad \
 	mingw \
+	nmap \
 	portable-virtualbox \
 	v2ray \
 	qv2ray \
@@ -94,7 +98,8 @@ scoop install \
 	telegram \
 	cmake \
 	winscp \
-	anki@2.1.15 \
+	anki \
+	ipscan \
 	picgo \
 	nodejs \
 	yarn \
@@ -106,7 +111,8 @@ scoop install \
 	vcredist2022 \
 	zeal \
 	logseq \
-	lux \ # CLI video downloader
+	lux \
+	alist \
 	mosh-client \
 	powertoys \
 	vncviewer \
