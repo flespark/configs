@@ -26,8 +26,7 @@ alias v='vim'
 alias mk='make'
 alias ta='tmux attach -t default || tmux new -s default'
 alias vd='vimdiff'
-alias lr='less -r'
-alias path='echo -e ${PATH//:/\\n}'
+alias lr='less -r' alias path='echo -e ${PATH//:/\\n}'
 alias myip='curl -s http://myip.ipip.net'
 
 alias gd='git diff --no-index'
@@ -86,3 +85,54 @@ alias dict='open -a "Eudic"'
 
 # dbg tools
 egdb() { emacs --eval "(gdb \"gdb --annotate=3 -i=mi $*\")"; }
+
+# cmdline proxy
+# function：enable/disable/check cmdline proxy status
+# usage：toggle_proxy on     (enable proxy)
+#      toggle_proxy off      (disable proxy)
+#      toggle_proxy status   (check status)
+function toggle_proxy() {
+  local http_port="8889"
+  local socks_port="1089"
+
+  local http_proxy_var="http_proxy"
+  local https_proxy_var="https_proxy"
+  local socks_proxy_var="socks_proxy"
+  local no_proxy_var="no_proxy"
+
+  local action="${1:-status}"
+
+  case "$action" in
+    on)
+      export http_proxy="http://127.0.0.1:$http_port"
+      export https_proxy="http://127.0.0.1:$http_port"
+      export socks_proxy="socks5://127.0.0.1:$socks_port"
+      export no_proxy="localhost,127.0.0.1,::1"
+
+      echo "Proxy enabled (HTTP: $http_port, SOCKS: $socks_port)。"
+      ;;
+
+    off)
+      unset http_proxy
+      unset https_proxy
+      unset socks_proxy
+      unset no_proxy
+
+      echo "Proxy disabled"
+      ;;
+
+    status)
+      echo "Current Proxy Settings:"
+      if [[ -n "$http_proxy" || -n "$socks_proxy" ]]; then
+        env | grep -E "($http_proxy_var|$https_proxy_var|$socks_proxy_var|$no_proxy_var)"
+      else
+        echo "No proxy is set."
+      fi
+      ;;
+
+    *)
+      echo "usage：toggle_proxy on|off|status"
+      return 1
+      ;;
+  esac
+}
