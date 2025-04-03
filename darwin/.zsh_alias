@@ -27,15 +27,16 @@ alias mk='make'
 alias ta='tmux attach -t default || tmux new -s default'
 alias vd='vimdiff'
 alias lr='less -r'
-alias gd='git diff --no-index'
 alias path='echo -e ${PATH//:/\\n}'
-alias gc='git clone'
-alias cx='cd `git rev-parse --show-toplevel`'
 alias myip='curl -s http://myip.ipip.net'
 
+alias gd='git diff --no-index'
+alias gc='git clone'
+alias gcs='git clone --single-branch --depth=1'
+alias gcl='git clone --single-branch --depth=50'
+alias cx='cd `git rev-parse --show-toplevel`'
 
-if type -p fdfind &>/dev/null; then
-	alias fd='fdfind'
+if type -p fd &>/dev/null; then
 	alias fd2='fd -d 2'
 	alias fd3='fd -d 3'
 	alias fd4='fd -d 4'
@@ -63,8 +64,25 @@ else
 	alias gf='grep -inrIF ./ -e'
 fi
 
-
-if type -p tldr &>/dev/null; then
-	alias tf='tldr find'
+if type -p delta $>/dev/null; then
+	alias de='delta'
+	alias di='delta --line-numbers'
+	alias ds='delta --line-numbers --side-by-side'
+	alias dh='delta --line-numbers --side-by-side --hyperlinks'
 fi
 
+# tldr find (tealdeer)
+if type -p tldr &>/dev/null; then
+	alias tl='tldr'
+fi
+
+
+# open GUI APP directly
+alias firefox='open -a "Microsoft Edge"'
+alias typora='open -a "Typora"'
+alias kicad='open -a "KiCad"'
+alias arduino='open -a "Arduino IDE"'
+alias dict='open -a "Eudic"'
+
+# dbg tools
+egdb() { emacs --eval "(gdb \"gdb --annotate=3 -i=mi $*\")"; }

@@ -10,7 +10,9 @@ syntax on
 set showmatch
 set ignorecase smartcase
 set incsearch
-colorscheme jellybeans
+set clipboard=unnamedplus
+set background=light
+colorscheme PaperColor
 hi normal guibg=NONE ctermbg=NONE
 hi endofbuffer guibg=NONE ctermbg=NONE
 filetype plugin indent on

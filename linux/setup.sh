@@ -46,14 +46,14 @@ overlap_check() {
 bash_setup() {
     if [ -f $HOME/.bashrc ]; then
         echo "$HOME/.bashrc not exist, new created"
-        cat /etc/skel/.bashrc .bashrc > "$HOME/.bashrc"
+        cat /etc/skel/.bashrc linux/.bashrc > "$HOME/.bashrc"
     elif overlap_check ".bashrc" "$HOME/.bahrc"; then
-        cat $HOME/.bashrc .bashrc > "$HOME/.bashrc"
+        cat $HOME/.bashrc linux/.bashrc > "$HOME/.bashrc"
     else
         echo "$HOME/.bashrc seems have merged the content of .bashrc, skip."
         return 0
     fi
-    for bash_file in .inputrc .bash_*; do
+    for bash_file in linux/.inputrc linux/.bash_*; do
         if [ -f "$HOME/$bash_file" ]; then
             printf "bash_file: %s exist\n" "$bash_file"
             exit 1
@@ -66,16 +66,16 @@ bash_setup() {
 
 vim_setup() {
     local features
-    echo > .vim/.viminfo
+    echo > common/.vim/.viminfo
     features=$(vim --version | sed -n -e '/+job/p' -e '/+channel/p' -e '/+timers/p' | wc -l)
     if ((features == 3)); then
         if [ -f $HOME/.vimrc ]; then
             read_bool "$HOME/.vimrc exist, overwrite it?" && \
-                ln -srLf .vimrc $HOME/
+                ln -srLf /common/.vimrc $HOME/
         fi
         if [ -d .vim ]; then
             read_bool "$HOME/.vim exist, replace it?" && \
-                ln -srLf .vim $HOME/
+                ln -srLf common/.vim $HOME/
         fi
     else
         echo -e "Vim version must above 8.0 with features +job +timer +channel for LSP support
@@ -103,21 +103,23 @@ git_setup() {
             return 1
         fi
     else
-        for git_dir in .gitconfig  .gitignore .git_*; do
+        for git_dir in common/.gitconfig  common/.gitignore common/.git_*; do
             ln -srL $git_dir $HOME/
         done
     fi
 }
 
 tmux_setup() {
-    ln -srfL .tmux.conf $HOME/
-    ln -srfL .tmux $HOME/
+    ln -srfL common/.tmux.conf $HOME/
+    ln -srfL common/.tmux $HOME/
 }
 
 command_install() {
     local distro
     local machtype
     distro=$(sed -n 's/^ID=\([a-z]\+\)/\1/p' /etc/os-release)
+    # FIXME: pacman use different pkg name
+    pkg=linux/apt.pkglist
 
 
     case $distro in
@@ -128,7 +130,6 @@ command_install() {
             done < apt.pkglist
             ;;
         arch)
-            # FIXME: pacman use different pkg name
             pacman -Syu
             while read pkg; do
                 pacman --noconfirm -S $pkg
@@ -137,35 +138,15 @@ command_install() {
     esac
 }
 
-tldr_setup() {
-    if [ -f ~/.tldrrc ]; then
-        echo "tldr config file exit, return"
-        return 0
-    fi
-    if ! type -P tldr >/dev/null; then
-        echo "tldr cmd not find, return"
-        return 1
-    fi
-    repo="$(readlink -f source/tldr)"
-    cp .tldrrc $HOME/
-    sed -i "s|\(repo_directory:\).*|\1 $repo|g" $HOME/.tldrrc
-    tldr reindex
-    tldr update
-}
-
 infect() {
     pushd $(git rev-parse --show-toplevel)
     git submodule update --init
     echo $(dirname "${BASH_SOURCE[0]}")
-    pushd $(readlink -f "$SOURCE")
     command_install
     bash_setup
     tmux_setup
-    popd
-    push common
     git_setup
     vim_setup
-    popd
     popd
 }
 
