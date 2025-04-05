@@ -90,12 +90,15 @@ scoop install \
 	eclipse-cpp \
 	vscode \
 	windows-terminal \
+	winmerge \
+	wiztree \
 	alacritty \
 	etcher \
 	notepad3 \
 	googlechrome \
 	listary1desktop \
 	telegram \
+	clangd \
 	cmake \
 	winscp \
 	anki \
@@ -103,7 +106,6 @@ scoop install \
 	picgo \
 	nodejs \
 	yarn \
-	docker \
 	vlc \
 	rufus \
 	hugo \
