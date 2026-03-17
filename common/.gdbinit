@@ -3,6 +3,8 @@ set history save on
 set history size 10000
 set history filename ~/.gdb_history
 set history expansion on
+set print pretty
+set output-radix 16
 
 define hook-next
 	next

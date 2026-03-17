@@ -64,10 +64,8 @@ noremap <right> <nop>
 noremap <left> <nop>
 
 set ttimeout
-set ttimeoutlen=300
+set ttimeoutlen=200
 nnoremap D "_d
-inoremap jk <Esc>
-inoremap kj <Esc>
 " ban useless key prone to hit
 noremap U <nop>
 noremap K <nop>

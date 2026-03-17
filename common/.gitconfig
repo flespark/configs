@@ -23,10 +23,7 @@
     line-numbers = true
     side-by-side = true
 
-    # syntex highlight
-    syntax-theme = Github
-    plus-style = "syntax #003800"  # newline style
-    minus-style = "syntax #3f0001"  # removed line style
+    show-crlf = true
 
     # file compare
     file-style = bold yellow ul  # file name style
@@ -47,6 +44,7 @@
 [diff]
 	guitool = kdiff3
 	tool = delta
+	alogrithm = patience
 [difftool]
     prompt = false
 [push]
@@ -59,7 +57,8 @@
 	af = am --reject --whitespace=fix
 	br = branch
 	bv = branch -vv
-    c = clone
+	c = clone
+	cs = clone --single-branch --depth=20
 	cl = config -l
 	cm = commit
 	cma = commit --amend
@@ -67,12 +66,13 @@
 	co = checkout
 	ch = checkout --
 	cp = cherry-pick
-	dc = diff --cached
-    dcn = diff --name-status --cached
 	df = diff
+	dc = diff --cached
+	dcn = diff --name-status --cached
 	fp = format-patch
 	ft = fetch
 	gp = log --graph --date=short --format=\"%C(yellow)%h%C(reset) %C(magenta)%cd %C(auto)%d%C(reset) %s  %C(cyan)@%an%C(reset)\"
+	gps = log --graph --all --pretty=format:'%C(yellow)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%ad) %C(bold blue)<%an>%C(reset)' --date=short
 	gr = log --decorate --graph --oneline --all
 	lg = log --graph --oneline --decorate --all
 	ls = log --decorate --name-status
@@ -93,6 +93,9 @@
 	sl = stash list
 	sa = stash apply
 	us = reset HEAD --
+	wta = "!f() { git worktree add -b \"$1\" \"../$1\"; }; f"
+	wtr = "!f() { git worktree remove \"../$1\"; }; f"
+	wtl = "!f() { git worktree list; }; f"
 [init]
 	defaultBranch = main
 # [url "https://hub.fgit.ml/"]
@@ -114,10 +117,10 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 # ssh proxy, according to you proxy setting
-[socks]
-	proxy = socks://127.0.0.1:1088
+# [socks]
+#	proxy = socks://127.0.0.1:1088
 # ssh proxy, according to you proxy setting
-[http]
-	proxy = http://127.0.0.1:8889
+# [http]
+#	 proxy = http://127.0.0.1:8889
 [interactive]
 	diffFilter = delta --color-only
