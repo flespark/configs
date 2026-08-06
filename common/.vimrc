@@ -10,7 +10,12 @@ syntax on
 set showmatch
 set ignorecase smartcase
 set incsearch
-set clipboard=unnamedplus
+" Do not use clipboard=unnamedplus: on macOS, p reads the system clipboard
+" but yy does not write to it, so internal yank/paste breaks. Sync yanks to
+" the system clipboard separately; use "+p to paste from outside Vim.
+if has('clipboard')
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call setreg('+', getreg('"')) | endif
+endif
 set background=light
 colorscheme PaperColor
 hi normal guibg=NONE ctermbg=NONE

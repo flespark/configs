@@ -85,6 +85,8 @@ alias kicad='open -a "KiCad"'
 alias arduino='open -a "Arduino IDE"'
 alias dict='open -a "Eudic"'
 
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
 # dbg tools
 egdb() { emacs --eval "(gdb \"gdb --annotate=3 -i=mi $*\")"; }
 
@@ -94,8 +96,8 @@ egdb() { emacs --eval "(gdb \"gdb --annotate=3 -i=mi $*\")"; }
 #      toggle_proxy off      (disable proxy)
 #      toggle_proxy status   (check status)
 function toggle_proxy() {
-  local http_port="8889"
-  local socks_port="1089"
+  local http_port="7897"
+  local socks_port="7897"
 
   local http_proxy_var="http_proxy"
   local https_proxy_var="https_proxy"
