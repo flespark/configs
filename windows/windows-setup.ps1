@@ -24,6 +24,17 @@ scoop install sudo
 # TODO: install git-windows.exe from inland mirror site
 sudo Copy-Item .gitconfig ~ -Force
 
+# Neovim reuses the shared Vim config: common/.nvimrc prepends ~/.vim to
+# runtimepath/packpath and sources ~/.vimrc, so install it as init.vim
+# (nvim on Windows reads $env:LOCALAPPDATA\nvim\init.vim).
+sudo Copy-Item common\.vimrc ~ -Force
+sudo Copy-Item common\.vim ~ -Force -Recurse
+$nvimConf = "$env:LOCALAPPDATA\nvim"
+if (!(Test-Path -Path $nvimConf)) {
+    New-Item -ItemType Directory -Path $nvimConf | Out-Null
+}
+sudo Copy-Item common\.nvimrc "$nvimConf\init.vim" -Force
+
 scoop bucket add extras
 scoop bucket add nirsoft
 scoop bucket add nerd-fonts

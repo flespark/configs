@@ -11,6 +11,40 @@ zsh_setup() {
     done
 }
 
+vim_setup() {
+    local features
+    features=$(vim --version | sed -n -e '/+job/p' -e '/+channel/p' -e '/+timers/p' | wc -l)
+    if ((features == 3)); then
+        for vim_file in common/.vimrc common/.vim; do
+            if [ -e "$HOME/$vim_file" ] || [ -L "$HOME/$vim_file" ]; then
+                printf "vim file: %s exist\n" "$HOME/$vim_file"
+                exit 1
+            fi
+        done
+        ln -srL common/.vimrc "$HOME/"
+        ln -srL common/.vim "$HOME/"
+    else
+        printf "Vim version must above 8.0 with features +job +timer +channel for LSP support\n"
+        printf "macOS bundled vim lacks these; 'brew install vim' first, then re-run.\n"
+        return 1
+    fi
+}
+
+nvim_setup() {
+    if ! command -v nvim >/dev/null; then
+        printf "nvim not installed, skip\n"
+        return 0
+    fi
+    # .nvimrc reuses the vim config: prepends ~/.vim to runtimepath/packpath
+    # and sources ~/.vimrc.
+    mkdir -p "$HOME/.config/nvim"
+    if [ -e "$HOME/.config/nvim/init.vim" ] || [ -L "$HOME/.config/nvim/init.vim" ]; then
+        printf "nvim init: %s exist\n" "$HOME/.config/nvim/init.vim"
+        exit 1
+    fi
+    ln -srL common/.nvimrc "$HOME/.config/nvim/init.vim"
+}
+
 brew_setup() {
 	# download homebrew from aliyun mirros and install
 	git clone https://mirrors.aliyun.com/homebrew/install.git brew-install
@@ -32,6 +66,8 @@ brew_setup() {
 infect() {
     pushd $(git rev-parse --show-toplevel)
     zsh_setup
+    vim_setup
+    nvim_setup
     brew_setup
     popd
 }

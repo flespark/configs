@@ -79,7 +79,7 @@ fi
 
 # open GUI APP directly
 alias finder='open -a "Finder"'
-alias firefox='open -a "Microsoft Edge"'
+alias firefox='open -a "Firefox"'
 alias typora='open -a "Typora"'
 alias kicad='open -a "KiCad"'
 alias arduino='open -a "Arduino IDE"'

@@ -69,18 +69,41 @@ vim_setup() {
     echo > common/.vim/.viminfo
     features=$(vim --version | sed -n -e '/+job/p' -e '/+channel/p' -e '/+timers/p' | wc -l)
     if ((features == 3)); then
-        if [ -f $HOME/.vimrc ]; then
-            read_bool "$HOME/.vimrc exist, overwrite it?" && \
-                ln -srLf /common/.vimrc $HOME/
+        if [ -e "$HOME/.vimrc" ] || [ -L "$HOME/.vimrc" ]; then
+            if read_bool "$HOME/.vimrc exist, overwrite it?"; then
+                ln -srLf common/.vimrc "$HOME/"
+            fi
+        else
+            ln -srL common/.vimrc "$HOME/"
         fi
-        if [ -d .vim ]; then
-            read_bool "$HOME/.vim exist, replace it?" && \
-                ln -srLf common/.vim $HOME/
+        if [ -e "$HOME/.vim" ] || [ -L "$HOME/.vim" ]; then
+            if read_bool "$HOME/.vim exist, replace it?"; then
+                ln -srLf common/.vim "$HOME/"
+            fi
+        else
+            ln -srL common/.vim "$HOME/"
         fi
     else
         echo -e "Vim version must above 8.0 with features +job +timer +channel for LSP support
         \rplease manually upgrade first!"
         return 1
+    fi
+}
+
+nvim_setup() {
+    if ! type -P nvim >/dev/null; then
+        echo "nvim not installed, skip"
+        return 0
+    fi
+    # .nvimrc reuses the vim config: prepends ~/.vim to runtimepath/packpath
+    # and sources ~/.vimrc.
+    mkdir -p "$HOME/.config/nvim"
+    if [ -e "$HOME/.config/nvim/init.vim" ] || [ -L "$HOME/.config/nvim/init.vim" ]; then
+        if read_bool "$HOME/.config/nvim/init.vim exist, overwrite it?"; then
+            ln -srLf common/.nvimrc "$HOME/.config/nvim/init.vim"
+        fi
+    else
+        ln -srL common/.nvimrc "$HOME/.config/nvim/init.vim"
     fi
 }
 
@@ -116,7 +139,6 @@ tmux_setup() {
 
 command_install() {
     local distro
-    local machtype
     distro=$(sed -n 's/^ID=\([a-z]\+\)/\1/p' /etc/os-release)
     # FIXME: pacman use different pkg name
     pkg=linux/apt.pkglist
@@ -147,6 +169,7 @@ infect() {
     tmux_setup
     git_setup
     vim_setup
+    nvim_setup
     popd
 }
 

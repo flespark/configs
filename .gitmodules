@@ -61,6 +61,3 @@
 [submodule "linux/source/tldr-pages"]
 	path = linux/source/tldr-pages
 	url = https://github.com/tldr-pages/tldr.git
-[submodule "common/.vim/pack/combine/start/vim-tmux-navigator"]
-	path = common/.vim/pack/combine/start/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator

@@ -10,9 +10,13 @@ syntax on
 set showmatch
 set ignorecase smartcase
 set incsearch
-" Do not use clipboard=unnamedplus: on macOS, p reads the system clipboard
-" but yy does not write to it, so internal yank/paste breaks. Sync yanks to
-" the system clipboard separately; use "+p to paste from outside Vim.
+" Vim: sync yanks to the system clipboard separately (unnamedplus breaks
+" internal yank/paste there on macOS); use "+p to paste from outside Vim.
+" Neovim: unnamedplus works (verified with pbcopy/pbpaste) — the unnamed
+" register aliases "+, so y/p/dd all share the system clipboard.
+if has('nvim')
+    set clipboard^=unnamedplus
+endif
 if has('clipboard')
     autocmd TextYankPost * if v:event.operator ==# 'y' | call setreg('+', getreg('"')) | endif
 endif
@@ -45,6 +49,9 @@ set foldenable
 set foldmethod=syntax
 set foldcolumn=0
 set foldlevel=99
+
+" enlarge regex pattern memory limit to 8MB
+set maxmempattern=8000
 
 set undofile
 set undodir=~/.vim/undo
@@ -102,7 +109,10 @@ autocmd BufNewFile,BufReadPost * if &filetype == "yaml" | set expandtab shiftwid
 call plug#begin('~/.vim/plugged')
 " install plugin
 Plug 'junegunn/fzf', { 'dir': '~/fzf', 'do': './install --all' }
-Plug 'gpanders/editorconfig.nvim'
+Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
+" editorconfig-vim works on both Vim and Neovim (pure Vimscript).
+Plug 'editorconfig/editorconfig-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'KabbAmine/zeavim.vim'
 Plug 'andymass/vim-matchup'
