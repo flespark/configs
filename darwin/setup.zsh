@@ -45,6 +45,27 @@ nvim_setup() {
     ln -srL common/.nvimrc "$HOME/.config/nvim/init.vim"
 }
 
+tmux_setup() {
+    if [ -e "$HOME/.tmux.conf" ] || [ -L "$HOME/.tmux.conf" ]; then
+        printf "tmux file: %s exist\n" "$HOME/.tmux.conf"
+        exit 1
+    fi
+    ln -srL common/.tmux.conf "$HOME/"
+    # bootstrap tpm, the tmux plugin manager (prefix + I inside tmux).
+    mkdir -p "$HOME/.tmux/plugins"
+    if [ ! -d "$HOME/.tmux/plugins/tpm/.git" ]; then
+        git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    fi
+}
+
+plug_install() {
+    if command -v nvim >/dev/null; then
+        nvim --headless '+PlugInstall' '+qa' || printf "warn: PlugInstall failed\n"
+    elif command -v vim >/dev/null; then
+        vim -es '+PlugInstall' +qa || printf "warn: PlugInstall failed\n"
+    fi
+}
+
 brew_setup() {
 	# download homebrew from aliyun mirros and install
 	git clone https://mirrors.aliyun.com/homebrew/install.git brew-install
@@ -68,6 +89,8 @@ infect() {
     zsh_setup
     vim_setup
     nvim_setup
+    tmux_setup
+    plug_install
     brew_setup
     popd
 }

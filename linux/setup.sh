@@ -134,7 +134,30 @@ git_setup() {
 
 tmux_setup() {
     ln -srfL common/.tmux.conf $HOME/
-    ln -srfL common/.tmux $HOME/
+    # bootstrap tpm, the tmux plugin manager: it installs/serves the
+    # plugins declared in .tmux.conf (prefix + I inside tmux).
+    mkdir -p "$HOME/.tmux/plugins"
+    if [ ! -d "$HOME/.tmux/plugins/tpm/.git" ]; then
+        git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    fi
+}
+
+tldr_setup() {
+    # tldr-py reads repo_directory from ~/.tldrrc (~/source/tldr);
+    # formerly the tldr-pages git submodule.
+    if [ -d "$HOME/source/tldr/.git" ]; then
+        return 0
+    fi
+    mkdir -p "$HOME/source"
+    git clone --depth 1 https://github.com/tldr-pages/tldr.git "$HOME/source/tldr"
+}
+
+plug_install() {
+    if type -P nvim >/dev/null; then
+        nvim --headless '+PlugInstall' '+qa' || echo "warn: PlugInstall failed, run :PlugInstall manually"
+    elif type -P vim >/dev/null; then
+        vim -es '+PlugInstall' '+qa' || echo "warn: PlugInstall failed, run :PlugInstall manually"
+    fi
 }
 
 command_install() {
@@ -162,14 +185,15 @@ command_install() {
 
 infect() {
     pushd $(git rev-parse --show-toplevel)
-    git submodule update --init
     echo $(dirname "${BASH_SOURCE[0]}")
     command_install
     bash_setup
     tmux_setup
+    tldr_setup
     git_setup
     vim_setup
     nvim_setup
+    plug_install
     popd
 }
 

@@ -105,7 +105,8 @@ inoremap jj <esc>
 autocmd BufNewFile,BufReadPost * if &filetype == "python" | set indentkeys-=0# | endif
 autocmd BufNewFile,BufReadPost * if &filetype == "yaml" | set expandtab shiftwidth=2 indentkeys-=0# | endif
 
-" TODO: use vim-plug
+" All plugins are managed by vim-plug (formerly git submodules under
+" .vim/pack; the dracula colorscheme stays vendored in pack/themes).
 call plug#begin('~/.vim/plugged')
 " install plugin
 Plug 'junegunn/fzf', { 'dir': '~/fzf', 'do': './install --all' }
@@ -113,10 +114,20 @@ Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
 " editorconfig-vim works on both Vim and Neovim (pure Vimscript).
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdtree'
+Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
 Plug 'easymotion/vim-easymotion'
 Plug 'KabbAmine/zeavim.vim'
 Plug 'andymass/vim-matchup'
-" ...
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim/killersheep'
 call plug#end()
 
 " fzf-vim shortkey

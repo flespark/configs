@@ -35,6 +35,9 @@ if (!(Test-Path -Path $nvimConf)) {
 }
 sudo Copy-Item common\.nvimrc "$nvimConf\init.vim" -Force
 
+# Initialize vim-plug plugins (all formerly submodule-managed)
+nvim --headless +PlugInstall +qa
+
 scoop bucket add extras
 scoop bucket add nirsoft
 scoop bucket add nerd-fonts
@@ -183,6 +186,8 @@ notepad.exe /etc/pacman.d/mirrorlist
 pacman-key --init
 pacman-key --populate archlinux
 pacman -Syu base base-devel vim
+# bootstrap tpm for the shared .tmux.conf (prefix + I inside tmux installs plugins)
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # add non-root user:
 # useradd -m -G wheel username
 # passwd username
