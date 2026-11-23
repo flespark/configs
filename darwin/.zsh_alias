@@ -1,3 +1,7 @@
+# Make word = alphanumerics + dash for C-w (backward-kill-word): C-w deletes
+# back to the first char that is neither alphanumeric nor '-'.
+WORDCHARS='-'
+
 # file system
 alias br='broot'
 alias sl='ls'

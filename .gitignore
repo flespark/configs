@@ -3,3 +3,4 @@ common/.vim/viminfo
 common/.vim/.shada
 common/.vim/plugged/
 common/.vim/pack/combine/start/vim-tmux-navigator/
+common/.vim/.netrwhist
