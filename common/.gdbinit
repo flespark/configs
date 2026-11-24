@@ -6,17 +6,3 @@ set history expansion on
 set print pretty
 set output-radix 16
 
-define hook-next
-	next
-	refresh
-end
-
-define hook-continue
-	continue
-	refresh
-end
-
-define hook-step
-	step
-	refresh
-end
