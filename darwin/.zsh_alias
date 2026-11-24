@@ -93,6 +93,15 @@ alias get_idf='. $HOME/esp/esp-idf/export.sh'
 # dbg tools
 egdb() { emacs --eval "(gdb \"gdb --annotate=3 -i=mi $*\")"; }
 
+# forward OPENAI_BASE_URL from ~/.zshenv to codex (codex CLI does not read OPENAI_BASE_URL natively)
+codex() {
+  if [[ -n "$OPENAI_BASE_URL" ]]; then
+    command codex -c "model_providers.openai_env.base_url=\"$OPENAI_BASE_URL\"" "$@"
+  else
+    command codex "$@"
+  fi
+}
+
 # cmdline proxy
 # function：enable/disable/check cmdline proxy status
 # usage：toggle_proxy on     (enable proxy)

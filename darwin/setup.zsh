@@ -1,12 +1,15 @@
 #!/bin/zsh
 
 zsh_setup() {
-    for zsh_file in darwin/.zsh_*; do
-        if [ -f "$HOME/$zsh_file" ]; then
-            printf "zsh file: %s exist\n" "$zsh_file"
-            exit 1
+    # macOS ln has no -r: link by absolute path from the repo root (infect
+    # pushd'd here). Existing files are skipped, not fatal.
+    # .zshrc/.zshenv have no underscore: the glob alone never matched them.
+    for zsh_file in darwin/.zshrc darwin/.zshenv darwin/.zsh_*; do
+        local dst="$HOME/${zsh_file:t}"
+        if [ -e "$dst" ] || [ -L "$dst" ]; then
+            printf "zsh file: %s exist, skip\n" "$dst"
         else
-            ln -srL "$zsh_file" "$HOME/"
+            ln -s "$(pwd)/$zsh_file" "$dst"
         fi
     done
 }
@@ -15,14 +18,16 @@ vim_setup() {
     local features
     features=$(vim --version | sed -n -e '/+job/p' -e '/+channel/p' -e '/+timers/p' | wc -l)
     if ((features == 3)); then
-        for vim_file in common/.vimrc common/.vim; do
+        for vim_file in .vimrc .vim; do
             if [ -e "$HOME/$vim_file" ] || [ -L "$HOME/$vim_file" ]; then
                 printf "vim file: %s exist\n" "$HOME/$vim_file"
                 exit 1
             fi
         done
-        ln -srL common/.vimrc "$HOME/"
-        ln -srL common/.vim "$HOME/"
+        # macOS ln has no -r: link by absolute path from the repo root (infect
+        # pushd'd here).
+        ln -s "$(pwd)/common/.vimrc" "$HOME/.vimrc"
+        ln -s "$(pwd)/common/.vim" "$HOME/.vim"
     else
         printf "Vim version must above 8.0 with features +job +timer +channel for LSP support\n"
         printf "macOS bundled vim lacks these; 'brew install vim' first, then re-run.\n"
@@ -42,7 +47,7 @@ nvim_setup() {
         printf "nvim init: %s exist\n" "$HOME/.config/nvim/init.vim"
         exit 1
     fi
-    ln -srL common/.nvimrc "$HOME/.config/nvim/init.vim"
+    ln -s "$(pwd)/common/.nvimrc" "$HOME/.config/nvim/init.vim"
 }
 
 tmux_setup() {
@@ -50,7 +55,7 @@ tmux_setup() {
         printf "tmux file: %s exist\n" "$HOME/.tmux.conf"
         exit 1
     fi
-    ln -srL common/.tmux.conf "$HOME/"
+    ln -s "$(pwd)/common/.tmux.conf" "$HOME/.tmux.conf"
     # bootstrap tpm, the tmux plugin manager (prefix + I inside tmux).
     mkdir -p "$HOME/.tmux/plugins"
     if [ ! -d "$HOME/.tmux/plugins/tpm/.git" ]; then
@@ -78,21 +83,18 @@ editorconfig_setup() {
 }
 
 brew_setup() {
-	# download homebrew from aliyun mirros and install
-	git clone https://mirrors.aliyun.com/homebrew/install.git brew-install
-	/bin/zsh brew-install/install.sh
-	rm -rf brew-install
-
-	# from github
-	# /bin/zsh -c "$(curl -fsSL https://github.com/Homebrew/install/raw/master/install.sh)"
-
-	# use aliyun mirror
-	echo 'export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"' >> ~/.zshrc
-	echo 'export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"' >> ~/.zshrc
-	echo 'export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"' >> ~/.zshrc
-	echo 'export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"' >> ~/.zshrc
-	source ~/.zshrc
-	brew update
+    # official installer; the aliyun mirror is abandoned (brew.git data
+    # incomplete - see the linked .zshenv for the NO_AUTO_UPDATE/CLEANUP vars).
+    if ! command -v brew >/dev/null; then
+        /bin/zsh -c "$(curl -fsSL https://github.com/Homebrew/install/raw/master/install.sh)"
+    fi
+    # restore the tracked tool/app lists (formulae leaves + casks)
+    while read -r pkg; do
+        [ -n "$pkg" ] && brew install "$pkg"
+    done < darwin/brew.pkglist
+    while read -r cask; do
+        [ -n "$cask" ] && brew install --cask "$cask"
+    done < darwin/brew.casklist
 }
 
 infect() {
