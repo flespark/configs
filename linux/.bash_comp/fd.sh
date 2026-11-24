@@ -6,13 +6,13 @@ _fd() {
     cmd=""
     opts=""
 
-    for i in ${COMP_WORDS[@]}
+    for i in "${COMP_WORDS[@]}"
     do
         case "${i}" in
             fd)
                 cmd="fd"
                 ;;
-            
+
             *)
                 ;;
         esac
@@ -26,7 +26,7 @@ _fd() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --max-depth)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -158,7 +158,7 @@ _fd() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        
+
     esac
 }
 

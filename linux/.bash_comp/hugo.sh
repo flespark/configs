@@ -210,13 +210,13 @@ __hugo_handle_reply()
     fi
 
     if [[ ${#COMPREPLY[@]} -eq 0 ]]; then
-		if declare -F __hugo_custom_func >/dev/null; then
-			# try command name qualified custom func
-			__hugo_custom_func
-		else
-			# otherwise fall back to unqualified for compatibility
-			declare -F __custom_func >/dev/null && __custom_func
-		fi
+        if declare -F __hugo_custom_func >/dev/null; then
+            # try command name qualified custom func
+            __hugo_custom_func
+        else
+            # otherwise fall back to unqualified for compatibility
+            declare -F __custom_func >/dev/null && __custom_func
+        fi
     fi
 
     # available in bash-completion >= 2, not always present on macOS
@@ -281,7 +281,7 @@ __hugo_handle_flag()
 
     # skip the argument to a two word flag
     if [[ ${words[c]} != *"="* ]] && __hugo_contains_word "${words[c]}" "${two_word_flags[@]}"; then
-			  __hugo_debug "${FUNCNAME[0]}: found a flag ${words[c]}, skip the next argument"
+              __hugo_debug "${FUNCNAME[0]}: found a flag ${words[c]}, skip the next argument"
         c=$((c+1))
         # if we are looking for a flags value, don't show commands
         if [[ $c -eq $cword ]]; then

@@ -3,12 +3,10 @@
 ##############################
 # TODO LIST:
 # swith shell prompt to starship
-# bash config reentry defence 
+# bash config reentry defence
 # switch tmux system to .tmux or tmuxp
 #############################
 set -e
-thold=70
-RPATH="${BASH_SOURCE[0]}"
 
 read_bool() {
     if (($# == 1)); then
@@ -130,6 +128,13 @@ git_setup() {
             ln -srL $git_dir $HOME/
         done
     fi
+}
+
+editorconfig_setup() {
+    # link like the other managed configs: repo updates reach home instantly,
+    # and the lookup walks up from ~/Project/configs to ~/.editorconfig, so
+    # the rules also govern this repo's own files outside common/.
+    ln -srL common/.editorconfig "$HOME/.editorconfig"
 }
 
 tmux_setup() {

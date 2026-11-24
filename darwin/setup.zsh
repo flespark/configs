@@ -66,6 +66,17 @@ plug_install() {
     fi
 }
 
+editorconfig_setup() {
+    if [ -e "$HOME/.editorconfig" ] || [ -L "$HOME/.editorconfig" ]; then
+        printf "editorconfig: %s exist, skip\n" "$HOME/.editorconfig"
+        return 0
+    fi
+    # macOS ln has no -r: link by absolute path from the repo root (infect
+    # pushd'd here). The lookup walks up from ~/Project/configs to ~/.editorconfig,
+    # so the rules also govern this repo's own files outside common/.
+    ln -s "$(pwd)/common/.editorconfig" "$HOME/.editorconfig"
+}
+
 brew_setup() {
 	# download homebrew from aliyun mirros and install
 	git clone https://mirrors.aliyun.com/homebrew/install.git brew-install

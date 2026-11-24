@@ -1,25 +1,37 @@
-# See: https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+# EditorConfig keeps files format consistent across Editor/IDEs.
+# doc see: https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
 root = true
 
 [*]
 charset = utf-8
-indent_style = table
-indent_size = 4
-trim_trailing_whitespace = true
-[*.[ch]]
-indent_style = space
-indent_size = 4
-max_line_length = 80
+end_of_line = lf
 insert_final_newline = true
-[README.md]
-max_line_length = 80
-[CMakeLists.txt]
+trim_trailing_whitespace = true
+
+[*.py]
 indent_style = space
 indent_size = 4
-max_line_length = 80
-[*.sh]
-indent_style = tab
-table_width = 4
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+[*.toml]
+indent_style = space
+indent_size = 4
+
+[*.{sh,bash}]
+indent_style = space
+indent_size = 4
+
 [*.ps1]
 indent_style = space
 indent_size = 4
+
+[Makefile]
+indent_style = tab
+
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 88

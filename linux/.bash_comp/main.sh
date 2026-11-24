@@ -1,4 +1,4 @@
-#!/bin/bash                                                                                                                                                                                                                                
+#!/bin/bash
 
 cwd="$(dirname "${BASH_SOURCE[0]}")"
 
@@ -29,30 +29,30 @@ dc(){
 }
 
 _dc(){
-	local opts
-	if (( ${#COMP_WORDS[@]} > 2 )); then
-		return
-	fi
-	local IFS=$'\n'
-	opts="$( tr '/' '\n' <<<"$PWD" | tac )"
-	# shellcheck disable=2207
-	COMPREPLY=($(compgen -W "${opts}" -- "${COMP_WORDS[1]}"))
+    local opts
+    if (( ${#COMP_WORDS[@]} > 2 )); then
+        return
+    fi
+    local IFS=$'\n'
+    opts="$( tr '/' '\n' <<<"$PWD" | tac )"
+    # shellcheck disable=2207
+    COMPREPLY=($(compgen -W "${opts}" -- "${COMP_WORDS[1]}"))
 }
 
 complete -F _dc dc
 
 if type -P fzf >/dev/null; then
-	. ${cwd}/fzf.sh
+    . ${cwd}/fzf.sh
 fi
 
 if type -P rg >/dev/null; then
-	. ${cwd}/rg.sh
+    . ${cwd}/rg.sh
 fi
 
 if type -P fd >/dev/null; then
-	. ${cwd}/fd.sh
+    . ${cwd}/fd.sh
 fi
 
 if type -P hugo >/dev/null; then
-	. ${cwd}/hugo.sh
+    . ${cwd}/hugo.sh
 fi
