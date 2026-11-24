@@ -1,6 +1,5 @@
-# Make word = alphanumerics + dash for C-w (backward-kill-word): C-w deletes
-# back to the first char that is neither alphanumeric nor '-'.
-WORDCHARS='-'
+# Make general file name word for C-w (backward-kill-word): C-w deletes
+WORDCHARS='-_.'
 
 # file system
 alias br='broot'
