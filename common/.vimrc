@@ -20,10 +20,8 @@ endif
 if has('clipboard')
     autocmd TextYankPost * if v:event.operator ==# 'y' | call setreg('+', getreg('"')) | endif
 endif
-set background=light
-colorscheme PaperColor
-hi normal guibg=NONE ctermbg=NONE
-hi endofbuffer guibg=NONE ctermbg=NONE
+" colorscheme is applied after plug#end() below: dracula's plugin dir
+" must already be on 'runtimepath' when it loads.
 filetype plugin indent on
 set cursorline
 " show status line
@@ -105,12 +103,13 @@ inoremap jj <esc>
 autocmd BufNewFile,BufReadPost * if &filetype == "python" | set indentkeys-=0# | endif
 autocmd BufNewFile,BufReadPost * if &filetype == "yaml" | set expandtab shiftwidth=2 indentkeys-=0# | endif
 
-" All plugins are managed by vim-plug (formerly git submodules under
-" .vim/pack; the dracula colorscheme stays vendored in pack/themes).
+" All plugins are managed by vim-plug
 call plug#begin('~/.vim/plugged')
 " install plugin
 Plug 'junegunn/fzf', { 'dir': '~/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" dracula colorscheme, guarded at the theme block below plug#end()
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'dense-analysis/ale'
 " editorconfig-vim works on both Vim and Neovim (pure Vimscript).
 Plug 'editorconfig/editorconfig-vim'
@@ -129,6 +128,20 @@ Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim/killersheep'
 call plug#end()
+
+" Theme: dracula from the dracula/vim plugin. Its colors/dracula.vim needs
+" the plugin's autoload/dracula.vim palette (the bare vendored colors file
+" errors with E121), so guard on the autoload: before PlugInstall, or after
+" the legacy pack copy is gone, fall back to the built-in desert (dark,
+" syntax-rich, ships with vim/nvim runtime — no plugin needed).
+set background=dark
+if !empty(globpath(&rtp, 'autoload/dracula.vim'))
+    colorscheme dracula
+else
+    colorscheme desert
+endif
+hi normal guibg=NONE ctermbg=NONE
+hi endofbuffer guibg=NONE ctermbg=NONE
 
 " fzf-vim shortkey
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -186,6 +199,6 @@ nnoremap <Leader><Leader> :ALEHover<cr>
 " Put these lines at the very end of your vimrc file.
 "
 " packloadall
-" Load all of the helptags now, after plugins have been loaded.
+" Load all of the helptags, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
