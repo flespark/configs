@@ -2,14 +2,11 @@
 # install psreadline first by "Install-Module -Name PSReadLine -AllowClobber -Force"
 Set-PSReadLineOption -EditMode Emacs
 
-# starship prompt (replaces the oh-my-posh powerline prompt); config at
-# ~\.config\starship.toml, linked by windows-setup.ps1
+# starship prompt; config at ~\.config\starship.toml, linked by
+# windows-setup.ps1. Without starship, PowerShell keeps its default prompt.
 Import-Module posh-git
 if (Get-Command starship -ErrorAction SilentlyContinue) {
     Invoke-Expression (&starship init powershell)
-} else {
-    Import-Module oh-my-posh
-    Set-PoshPrompt -Theme space
 }
 
 function enProxy {
