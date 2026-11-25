@@ -63,6 +63,17 @@ tmux_setup() {
     fi
 }
 
+starship_setup() {
+    mkdir -p "$HOME/.config"
+    if [ -e "$HOME/.config/starship.toml" ] || [ -L "$HOME/.config/starship.toml" ]; then
+        printf "starship config: %s exist, skip\n" "$HOME/.config/starship.toml"
+        return 0
+    fi
+    # macOS ln has no -r: link by absolute path from the repo root (infect
+    # pushd'd here). starship reads ~/.config/starship.toml by default.
+    ln -s "$(pwd)/common/.starship.toml" "$HOME/.config/starship.toml"
+}
+
 plug_install() {
     if command -v nvim >/dev/null; then
         nvim --headless '+PlugInstall' '+qa' || printf "warn: PlugInstall failed\n"
@@ -102,6 +113,7 @@ infect() {
     zsh_setup
     vim_setup
     nvim_setup
+    starship_setup
     tmux_setup
     plug_install
     brew_setup

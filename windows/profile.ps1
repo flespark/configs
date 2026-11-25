@@ -2,10 +2,15 @@
 # install psreadline first by "Install-Module -Name PSReadLine -AllowClobber -Force"
 Set-PSReadLineOption -EditMode Emacs
 
-# enable oh-my-posh (powerline prompt)
+# starship prompt (replaces the oh-my-posh powerline prompt); config at
+# ~\.config\starship.toml, linked by windows-setup.ps1
 Import-Module posh-git
-Import-Module oh-my-posh
-Set-PoshPrompt -Theme space
+if (Get-Command starship -ErrorAction SilentlyContinue) {
+    Invoke-Expression (&starship init powershell)
+} else {
+    Import-Module oh-my-posh
+    Set-PoshPrompt -Theme space
+}
 
 function enProxy {
 	[Environment]::SetEnvironmentVariable("http_proxy", "http://127.0.0.1:8889", "User")

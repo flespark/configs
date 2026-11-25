@@ -2,7 +2,6 @@
 
 ##############################
 # TODO LIST:
-# swith shell prompt to starship
 # bash config reentry defence
 # switch tmux system to .tmux or tmuxp
 #############################
@@ -157,6 +156,18 @@ tldr_setup() {
     git clone --depth 1 https://github.com/tldr-pages/tldr.git "$HOME/source/tldr"
 }
 
+starship_setup() {
+    # starship reads ~/.config/starship.toml by default
+    mkdir -p "$HOME/.config"
+    if [ -e "$HOME/.config/starship.toml" ] || [ -L "$HOME/.config/starship.toml" ]; then
+        if read_bool "$HOME/.config/starship.toml exist, overwrite it?"; then
+            ln -srLf common/.starship.toml "$HOME/.config/starship.toml"
+        fi
+    else
+        ln -srL common/.starship.toml "$HOME/.config/starship.toml"
+    fi
+}
+
 plug_install() {
     if type -P nvim >/dev/null; then
         nvim --headless '+PlugInstall' '+qa' || echo "warn: PlugInstall failed, run :PlugInstall manually"
@@ -177,10 +188,13 @@ command_install() {
             apt-get update
             while read pkg; do
                 apt install -y $pkg
-            done < apt.pkglist
+            done < linux/apt.pkglist
+            # starship is not packaged for apt; use the official installer
+            curl -fsSL https://starship.rs/install.sh | sh -s -- -y
             ;;
         arch)
             pacman -Syu
+            pacman --noconfirm -S starship
             while read pkg; do
                 pacman --noconfirm -S $pkg
             done < pacman.pkglist
@@ -198,6 +212,7 @@ infect() {
     git_setup
     vim_setup
     nvim_setup
+    starship_setup
     plug_install
     popd
 }

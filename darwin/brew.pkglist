@@ -40,6 +40,7 @@ riscv64-elf-gcc
 riscv64-elf-gdb
 sevenzip
 shellcheck
+starship
 texinfo
 tmux
 tree

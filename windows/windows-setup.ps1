@@ -38,6 +38,12 @@ sudo Copy-Item common\.nvimrc "$nvimConf\init.vim" -Force
 # Initialize vim-plug plugins (all formerly submodule-managed)
 nvim --headless +PlugInstall +qa
 
+# starship prompt (replaces powerline-go): config at ~\.config\starship.toml
+if (!(Test-Path -Path "$env:USERPROFILE\.config")) {
+    New-Item -ItemType Directory -Path "$env:USERPROFILE\.config" | Out-Null
+}
+sudo Copy-Item common\.starship.toml "$env:USERPROFILE\.config\starship.toml" -Force
+
 scoop bucket add extras
 scoop bucket add nirsoft
 scoop bucket add nerd-fonts
@@ -83,6 +89,7 @@ scoop install \
 	neovim \
 	fd \
 	ripgrep \
+	starship \
 	sd \
 	trzsz \
 	aria2 \

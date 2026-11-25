@@ -25,15 +25,12 @@ export PATH="/Users/simon/.local/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# prompt: synced from linux/.bashrc (fallback) + linux/.bash_env (powerline-go).
-# powerline-go installs to ~/go/bin (GOPATH default) via:
-#   go install github.com/justjanne/powerline-go@latest
+# prompt: fallback PS1 synced from linux/.bashrc. starship (replacing
+# powerline-go: better performance and shell compatibility) takes over
+# when installed; its config is linked to ~/.config/starship.toml by the
+# setup scripts.
 PROMPT=$'%{\e[0;31m%}%T %{\e[32m%}%1~ %{\e[36m%}>%{\e[00m%}'
 
-function _update_ps1() {
-    PROMPT="$($HOME/go/bin/powerline-go -cwd-max-depth 4 -cwd-mode semifancy -modules user,ssh,cwd,perms,git,exit,root -git-assume-unchanged-size 2048 -error $?)"
-}
-
-if [ "$TERM" != "linux" ] && [ -x "$HOME/go/bin/powerline-go" ]; then
-    precmd() { _update_ps1 }
+if command -v starship >/dev/null; then
+    eval "$(starship init zsh)"
 fi

@@ -1,0 +1,62 @@
+# Starship prompt, migrated from the former powerline-go config
+# (linux/.bash_env, darwin/.zshrc): keeps ssh / cwd / git / exit / root,
+# drops user and perms, and leads with an HH:MM clock.
+# The setup scripts link this file to ~/.config/starship.toml.
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# powerline-go rendered one dense line: no blank line before prompts.
+add_newline = false
+
+# Module order replaces powerline-go's -modules list.
+format = """
+$time\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$status\
+$character"""
+
+[time]
+disabled = false
+time_format = '%R' # HH:MM
+format = '[$time]($style) '
+style = 'red'
+
+# username doubles as powerline-go's root marker: hidden normally, red for
+# root. starship has no root-only mode, so it also shows over ssh.
+[username]
+show_always = false
+format = '[$user]($style) '
+style_root = 'bold red'
+
+[hostname]
+ssh_only = true
+format = '[$ssh_symbol$hostname]($style) '
+style = 'bold cyan'
+
+[directory]
+truncation_length = 4
+truncate_to_repo = false
+format = '[$path]($style) '
+style = 'green'
+
+[git_branch]
+format = '[$symbol$branch]($style) '
+style = 'bold cyan'
+
+[git_status]
+style = 'bold yellow'
+
+# exit code of the last command; hidden on success like powerline-go's exit
+[status]
+disabled = false
+format = '[$symbol$status]($style) '
+symbol = '✗'
+style = 'bold red'
+
+[character]
+success_symbol = '[❯](bold cyan)'
+error_symbol = '[❯](bold red)'
